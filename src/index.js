@@ -24,7 +24,8 @@ function App(){
                 }
             ],
             /* fields for education information */
-            educationList: []
+            educationList: [],
+            experienceList: []
     })
     /* Function to change state objects */
     function handleChange(event, dataset, index){
@@ -42,14 +43,14 @@ function App(){
                  }
         })
     }
-    function addEducation(){
-        console.log("Called")
+    function addEducation(dataset){
+        console.log([dataset])
         setFormData(prevFormData => {
             return {
                 ...prevFormData,
-                educationList: prevFormData.educationList.concat(
+                [dataset]: prevFormData[dataset].concat(
                     {
-                        index: prevFormData.educationList.length,
+                        index: prevFormData[dataset].length,
                         certificate: "",
                         institution: "",
                         dates: "",
@@ -60,9 +61,9 @@ function App(){
             }
         })
     }
-    function removeEducation(index){
+    function removeEducation(index, dataset){
         setFormData(prevFormData => {
-            let newArr = prevFormData.educationList.map(i => ({...i})) //Copy
+            let newArr = prevFormData[dataset].map(i => ({...i})) //Copy
             //old education data array
             for(let i = newArr.length - 1; i > index; i --){ //Decrement indices
                 //of succeeding elements
@@ -71,7 +72,7 @@ function App(){
             newArr.splice(index, 1) //Remove element at index
                 return ({ //return new data object with updated array
                     ...prevFormData,
-                    educationList: newArr
+                    [dataset]: newArr
                 })
             }
         )
@@ -87,7 +88,13 @@ function App(){
                 {/* Education */}
                 {formData.educationList.map(educationObject => {
                     return (
-                        <Education educationData={educationObject}/>
+                        <Education title="Education" dataset={educationObject}/>
+                    )}
+                )}
+                {/* Experience */}
+                {formData.experienceList.map(experienceObject => {
+                    return (
+                        <Education title="Experience" dataset={experienceObject}/>
                     )}
                 )}
             </div>
@@ -100,11 +107,28 @@ function App(){
                     handleChange={handleChange}
                     addEducation={addEducation}
                 />
+                {/* Education */}
+                <h1>Education</h1>
+                <button type="button" onMouseDown={() => (addEducation("educationList"))}>Add Education</button>
                 {formData.educationList.map(educationObject => {
                     return (
                         <EducationForm
                             index={educationObject.index}
                             dataset="educationList"
+                            formData={formData}
+                            handleChange={handleChange}
+                            removeEducation={removeEducation}
+                        />
+                    )
+                })}
+                {/* Experience */}
+                <h1>Experience</h1>
+                <button type="button" onMouseDown={() => (addEducation("experienceList"))}>Add Experience</button>
+                {formData.experienceList.map(experienceObject => {
+                    return (
+                        <EducationForm
+                            index={experienceObject.index}
+                            dataset="experienceList"
                             formData={formData}
                             handleChange={handleChange}
                             removeEducation={removeEducation}

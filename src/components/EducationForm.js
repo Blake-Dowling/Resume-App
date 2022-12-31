@@ -4,7 +4,7 @@ export default function EducationForm(props){
 <form>
     
         
-                {props.formData.educationList.length > 0 &&
+                {/* {props.formData.educationList.length > 0 && */}
                     <div>
                         <input
                             type="text"
@@ -34,9 +34,9 @@ export default function EducationForm(props){
                             name="location"
                             value={props.formData[props.dataset][props.index].location}
                         />
-                        <button type="button" onMouseDown={() => props.removeEducation(props.index)}>Remove Education</button>
+                        <button type="button" onMouseDown={() => props.removeEducation(props.index, props.dataset)}>Remove {props.dataset === "educationList"? "Education" : "Experience"}</button>
                     </div>
-                }
+                {/* } */}
 </form>
     )
 }

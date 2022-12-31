@@ -64,17 +64,9 @@ export default function Form(props){
                     name="linkedin"
                     value={props.formData[props.dataset][props.index].linkedin}
                 />
-                {/* Education */}
-                <h1>Education</h1>
-                {/* <input 
-                    type="checkbox"
-                    onChange={() => props.handleChange(props.dataset)}
-                    dataset={props.dataset}
-                    name="includeEducation"
-                    checked={props.formData.includeEducation}
-                /> */}
-                <button type="button" onMouseDown={props.addEducation}>Add Education</button>
+
                 {/*console.log(props.formData)*/}
+
             </form>
         </div>
     )
