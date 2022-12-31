@@ -10,6 +10,9 @@ body{
     color: black;
 
 }
+h1, p{
+    margin: 0px;
+}
 hr{
     border: none;
     color: black;
@@ -21,50 +24,66 @@ hr{
 .page{
     display: flex;
 }
+:root{
+    --template-bgColor: white;
+    --template-padding: 2em;
+    --heading-font-size: 1.5em;
+    --title-1-font-size: 1em;
+    --title-2-font-size: .8em;
+    --info-text-size: .6em;
+    --point-text-size: .6em;
+}
 /* Resume View */
+/* Resume Page Template */
 .view{
     --width: 600px;
     width: var(--width);
     height: calc(1.2942 * var(--width));
-    background-color: white;
-    border: solid black;
-    border-radius: 2.5px;
+    background-color: var(--template-bgColor);
     display: flex;
     flex-flow: column;
-    padding: 2em;
+    padding: var(--template-padding);
 }
-.control{
-    --width: 600px;
-    width: var(--width);
-    height: calc(1.2942 * var(--width));
-    background-color: white;
-    border: solid black;
-    border-radius: 2.5px;
-    display: flex;
-    flex-flow: column;
-    padding: 2em;
+/* Headings (name, section titles) */
+.heading-text{
+    font-size: var(--heading-font-size);
+}
+.title-1{
+    font-size: var(--title-1-font-size);
+}
+.title-2{
+    font-size: var(--title-2-font-size);
 }
 /* Section Container */
 .section--container{
     display: flex;
     flex-direction: column;
     align-items: left;
+    overflow-wrap: break-word;
 }
 /* Container Bar for contact info */
-.header--contact{
+.header--contact, .date-location{
     display: flex;
     overflow-wrap: normal;
     flex-wrap: wrap;
+    justify-content: center;
 }
-/* Template for each contact method element */
+.date-location{
+    justify-content: left;
+}
+/* Template for each contact method element (photo-text pairs) */
 .header--contact--object{
     display: flex;
     align-items: center;
     margin: .2em;
 }
-/* Contact info text */
+/* Contact info text (text in photo-text pairs)*/
 .contact-info{
-    font-size: .6em;
+    font-size: var(--info-text-size);
+}
+/* Bullet points */
+.point{
+    font-size: var(--point-text-size);
 }
 /* Images (icons) */
 .phone-logo{
@@ -94,4 +113,16 @@ hr{
 .calendar-logo{
     object-fit: contain;
     width: 1em;
+}
+
+.control{
+    --width: 600px;
+    width: var(--width);
+    height: calc(1.2942 * var(--width));
+    background-color: white;
+    border: solid black;
+    border-radius: 2.5px;
+    display: flex;
+    flex-flow: column;
+    padding: 2em;
 }

@@ -1,11 +1,16 @@
 import React from "react"
 import ReactDOM from "react-dom"
+import Pdf from "react-to-pdf"
+import ReactToPdf from "react-to-pdf"
 import "./style.css"
 import Heading from "./components/Heading.js"
 import Education from "./components/Education.js"
 import Form from "./components/Form.js"
 import EducationForm from "./components/EducationForm.js"
+const ref = React.createRef()
+const options = {
 
+}
 function App(){
     /* State object for all resume information */
     const [formData, setFormData] = React.useState(
@@ -118,19 +123,21 @@ function App(){
             })
         })
     }
+
     /* Layout of main app page */
+
     return(
         <div className="page">
             {/************************************************************/}
             {/******************** Left: resume view ********************/}
             {/************************************************************/}
-            <div className="view">
+            <div ref={ref} className="view">
                 {/******************** View: Personal Information ********************/}
                 <Heading personalInfo={formData.personalInformation[0]}/> 
                 {/******************** View: Education ********************/}
                 {formData.educationList.length > 0 && 
                     <div>
-                        <h1>Education</h1>
+                        <h1 className="heading-text">Education</h1>
                         <hr/>
                         {formData.educationList.map(educationObject => {
                             return (
@@ -142,7 +149,7 @@ function App(){
                 {/******************** View: Experience ********************/}
                 {formData.experienceList.length > 0 && 
                     <div>
-                        <h1>Experience</h1>
+                        <h1 className="heading-text">Experience</h1>
                         <hr/>
                         {formData.experienceList.map(experienceObject => {
                             return (
@@ -154,7 +161,7 @@ function App(){
                 {/******************** View: Projects ********************/}
                 {formData.projectList.length > 0 && 
                     <div>
-                        <h1>Projects</h1>
+                        <h1 className="heading-text">Projects</h1>
                         <hr/>
                         {formData.projectList.map(projectObject => {
                             return (
@@ -223,6 +230,14 @@ function App(){
                         />
                     )
                 })}
+            </div>
+            
+            <div>
+                <Pdf targetRef={ref} filename="file.pdf" options={options} scale={1}>
+                    {({toPdf}) => (
+                        <button onClick={toPdf}>Generate pdf</button>
+                    )}
+                </Pdf>
             </div>
         </div>
     )
