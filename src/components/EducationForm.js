@@ -34,7 +34,31 @@ export default function EducationForm(props){
                             name="location"
                             value={props.formData[props.dataset][props.index].location}
                         />
-                        <button type="button" onMouseDown={() => props.removeEducation(props.index, props.dataset)}>Remove {props.dataset === "educationList"? "Education" : "Experience"}</button>
+                        
+                        {props.formData[props.dataset][props.index].points.map(({pointIndex, pointContent}) => {
+                            {console.log("points: " + JSON.stringify(props.formData[props.dataset][props.index].points[pointIndex].pointContent))}
+                                return (<input
+                                    type="text"
+                                    onChange={(event) => props.handleChange(event, props.dataset, props.index, pointIndex)}
+                                    // name={`points[${pointIndex}].pointContent`}
+                                    name="points"
+                                    value={props.formData[props.dataset][props.index].points[pointIndex].pointContent}
+                                />)
+                            }
+                        )}
+                        <button
+                            type="button"
+                            onMouseDown={() => props.addPoint(props.index, props.dataset)}
+                            >Add Point
+                        </button>
+                        <button 
+                            type="button" 
+                            onMouseDown={() => props.removeEducation(props.index, props.dataset)}>Remove 
+                                {props.dataset === "educationList" ? " Education" :
+                                  props.dataset === "experienceList" ? " Experience" :
+                                  props.dataset === "projectList" ? " Project" :
+                                                   "Item" }
+                        </button>
                     </div>
                 {/* } */}
 </form>

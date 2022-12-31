@@ -1,5 +1,4 @@
 import React from "react"
-import EducationForm from "./EducationForm.js"
 /* Props: 1. formData to maintain each form's value using the state object in index.js. 
  * 2. handleChange function to change the state of the form data */
 export default function Form(props){
@@ -64,9 +63,6 @@ export default function Form(props){
                     name="linkedin"
                     value={props.formData[props.dataset][props.index].linkedin}
                 />
-
-                {/*console.log(props.formData)*/}
-
             </form>
         </div>
     )
