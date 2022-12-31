@@ -1,21 +1,21 @@
 import React from "react"
 
-export default function Education(){
+export default function Education(props){
     return (
         <div className="section--container">
             <div className="section--item">
                 <h1>Education</h1>
                 <hr/>
-                <p>B.S., Computer Science</p>
-                <p>University of California, Santa Cruz</p>
+                <p>{props.educationData.certificate}</p>
+                <p>{props.educationData.institution}</p>
                 <div className="header--contact">
                     <div className="header--contact--object">
                         <img className="calendar-logo" src="/images/Calendar-Logo.png"/>
-                        <p className="contact-info">2023</p>
+                        <p className="contact-info">{props.educationData.dates}</p>
                     </div>
                     <div className="header--contact--object">
                         <img className="location-logo" src="/images/Location-Logo.png"/>
-                        <p className="contact-info">Santa Cruz, CA</p>
+                        <p className="contact-info">{props.educationData.location}</p>
                     </div>
                 </div>
                 <div className="points-container">
