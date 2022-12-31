@@ -48,7 +48,6 @@ function App(){
                                     //Desired property within data object
                                     [name]: [name] == "points" ?
                                                 dataObj[name].map(pointObj => {
-                                                console.log("PO: " + JSON.stringify(pointObj))
                                                 return (pointObj.pointIndex === pointNum ? {pointIndex: pointNum, pointContent: value} : pointObj)
                                     }) : value
                                 } : dataObj
@@ -92,9 +91,8 @@ function App(){
     function addPoint(index, dataset){
         setFormData(prevFormData => {
                 let newArr = prevFormData[dataset].map(i => ({...i})) //Copy
-                //old data array
+                //old data object array
                 newArr[index].points.push({
-                
                     pointIndex: newArr[index].points.length,
                     pointContent: ""}) //Add a point object to the
                 //points property of the specified info section
@@ -104,6 +102,21 @@ function App(){
                 })
             }
         )
+    }
+    function removePoint(index, dataset, pointNum){
+        setFormData(prevFormData => {
+            let newArr = prevFormData[dataset].map(i => ({...i})) //Copy old data object array
+            let pointsList = newArr[index].points //points array
+            for(let i = pointsList.length - 1; i > pointNum; i --){ //decrement succeeding indices
+                pointsList[i].pointIndex --
+            }
+            pointsList.splice(pointNum, 1) //remove point object at given index
+            console.log("ARR: " + JSON.stringify(newArr))
+            return ({
+                ...prevFormData,
+                [dataset]: newArr
+            })
+        })
     }
     /* Layout of main app page */
     return(
@@ -174,6 +187,7 @@ function App(){
                             handleChange={handleChange}
                             removeEducation={removeEducation}
                             addPoint={addPoint}
+                            removePoint={removePoint}
                         />
                     )
                 })}
@@ -189,6 +203,7 @@ function App(){
                             handleChange={handleChange}
                             removeEducation={removeEducation}
                             addPoint={addPoint}
+                            removePoint={removePoint}
                         />
                     )
                 })}
@@ -204,6 +219,7 @@ function App(){
                             handleChange={handleChange}
                             removeEducation={removeEducation}
                             addPoint={addPoint}
+                            removePoint={removePoint}
                         />
                     )
                 })}
