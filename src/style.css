@@ -1,14 +1,35 @@
+@import url(https://fonts.googleapis.com/css?family=Khula:700);
 body{
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    font-family: Khula;
+    /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    sans-serif; */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: left;
-    background: #d8cdaa;
+    background: white;
+    /* background: #d8cdaa; */
+    /* background: linear-gradient(115deg, midnightblue 0% 45%, white 45% 50%, yellow); */
+    /* background: linear-gradient(115deg, white 0% 45%, deepskyblue 50% 50%, white 55% 100%); */
+    animation: gradient 20s ease infinite;
     background-attachment: fixed;
+    background-size: 400% 400%;
     color: black;
 
+}
+@keyframes gradient{
+    0%{
+        background-position: 0% 0%;
+    }
+    30%{
+        background-position: 50% 50%;
+    }
+    60%{
+        background-position: 100% 100%;
+    }
+    100%{
+        background-position: 0% 0%;
+    }
 }
 :root{
     --template-bgColor: white;
@@ -19,16 +40,26 @@ body{
     --info-text-size: .6em;
     --point-text-size: .6em;
     --form-info-text-size: .8em;
-    --form-font-color: #a9a9a9;
+    --form-font-color: #a9a9a961;
+    --drop-shadow-color: rgba(0, 0, 0, 0.139);
 }
 h1, h2, p{
     margin: 0px;
 }
 h2{
     align-self: center;
+    color: black;
+    filter: drop-shadow();
 }
-button{
+.form-button{
     margin: .4em;
+    padding: .8em;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 3px;
+    filter: drop-shadow(5px 5px 5px var(--drop-shadow-color));
+    font-family: inherit;
+
 }
 hr{
     border: none;
@@ -51,6 +82,9 @@ hr{
 /* Container for Resume View */
 /* Resume Page Template */
 .view{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
     --width: 600px;
     width: var(--width);
     height: calc(1.2942 * var(--width));
@@ -59,6 +93,7 @@ hr{
     flex-flow: column;
     padding: var(--template-padding);
     overflow: scroll;
+    filter: drop-shadow(5px 5px 5px var(--drop-shadow-color));
 }
 /* Headings (name, section titles) */
 .heading-text{
@@ -91,11 +126,15 @@ hr{
 .header--contact--object{
     display: flex;
     align-items: center;
-    margin: .2em;
+    margin-top: .2em;
+    margin-bottom: .2em;
+    margin-left: .4em;
+    margin-right: .4em;
 }
 /* Contact info text (text in photo-text pairs)*/
 .contact-info{
     font-size: var(--info-text-size);
+    margin-left: .8em;
 }
 ul{
     margin: 0px;
@@ -104,14 +143,18 @@ ul{
 .point{
     font-size: var(--point-text-size);
 }
+
 /* Images (icons) */
+img{
+    mix-blend-mode: multiply;
+}
 .phone-logo{
     object-fit: contain;
     width: .8em;
 }
 .gmail-logo{
     object-fit: contain;
-    width: 1.4em;
+    width: 1em;
 }
 .website-logo{
     object-fit: contain;
@@ -119,7 +162,7 @@ ul{
 }
 .github-logo{
     object-fit: contain;
-    width: 1em;
+    width: 1.0em;
 }
 .linkedin-logo{
     object-fit: contain;
@@ -173,6 +216,7 @@ ul{
     color: var(--form-font-color);
     position: absolute;
     top: 0px;
+    margin-left: .4em;
     transition-property: top, font-size;
     transition-duration: .2s;
 }
@@ -181,4 +225,17 @@ ul{
     font-size: 8px;
     top: -10px;
 
+}
+.point-input{
+    display: flex;
+    align-items: center;
+}
+.remove-point{
+    border: none;
+    background: rgba(255, 255, 255, 0);
+}
+.remove-point:after{
+    display: block;
+    content: "\00d7";
+    color: var(--form-font-color);
 }

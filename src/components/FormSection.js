@@ -38,6 +38,7 @@ export default function FormSection(props){
                         {dataObj.points === undefined ? <></> : (
                             <div>
                                 <button
+                                    className="form-button"
                                     type="button"
                                     onMouseDown={() => props.addPoint(props.index, props.dataset)}
                                     >Add Point
@@ -46,8 +47,9 @@ export default function FormSection(props){
                                 {/******************** Point Inputs ********************/}
                                 {/************************************************************/}
                                 {dataObj.points.map(({pointIndex, pointContent}) => {
-                                        return (<div>
+                                        return (<div className="point-input">
                                                     <input
+                                                        className="form-input"
                                                         type="text"
                                                         onChange={(event) => props.handleChange(event, props.dataset, props.index, pointIndex)}
                                                         name="points"
@@ -55,9 +57,10 @@ export default function FormSection(props){
                                                     />
                                                     {/******************** Remove-Points Button ********************/}
                                                     <button
+                                                        className="remove-point"
                                                         type="button"
                                                         onMouseDown={() => props.removePoint(props.index, props.dataset, pointIndex)}
-                                                    >Remove Point
+                                                    >
                                                     </button>
                                                 </div>
                                         )
@@ -70,6 +73,7 @@ export default function FormSection(props){
                         {/************************************************************/}
                         {props.dataset === "personalInformation" ? <></> :
                             <button 
+                                className="form-button"
                                 type="button" 
                                 onMouseDown={() => props.removeSection(props.index, props.dataset)}>Remove 
                                     {props.dataset === "educationList" ? " Education" :

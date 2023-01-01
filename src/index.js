@@ -1,6 +1,6 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import Pdf from "react-to-pdf"
+import {jsPDF} from "jspdf"
 import "./style.css"
 import Heading from "./components/Heading.js"
 import InfoSection from "./components/InfoSection.js"
@@ -121,7 +121,14 @@ function App(){
             })
         })
     }
-
+    function generatePDF(){
+        const doc = jsPDF("p", "pt", "a4")
+        doc.html(document.querySelector(".view"), {
+            callback: function(pdf){
+                pdf.save("mypdf.pdf")
+            }
+        })
+    }
     /* Layout of main app page */
     const personalInfoFields = ["name", "objective", "phone", "email", "website", "github", "linkedin"]
     const educationFields = ["certificate", "institution", "dates", "location"]
@@ -198,7 +205,7 @@ function App(){
                 /> */}
                 {/********************Form: Education ********************/}
                 <h2>Education</h2>
-                <button type="button" onMouseDown={() => (addSection("educationList"))}>Add Education</button>
+                <button className="form-button" type="button" onMouseDown={() => (addSection("educationList"))}>Add Education</button>
                 {formData.educationList.map(educationObject => {
                     return (
                         <FormSection
@@ -215,7 +222,7 @@ function App(){
                 })}
                 {/******************** Form: Experience ********************/}
                 <h2>Experience</h2>
-                <button type="button" onMouseDown={() => (addSection("experienceList"))}>Add Experience</button>
+                <button className="form-button" type="button" onMouseDown={() => (addSection("experienceList"))}>Add Experience</button>
                 {formData.experienceList.map(experienceObject => {
                     return (
                         <FormSection
@@ -232,7 +239,7 @@ function App(){
                 })}
                 {/******************** Form: Projects ********************/}
                 <h2>Projects</h2>
-                <button type="button" onMouseDown={() => (addSection("projectList"))}>Add Project</button>
+                <button  className="form-button" type="button" onMouseDown={() => (addSection("projectList"))}>Add Project</button>
                 {formData.projectList.map(projectObject => {
                     return (
                         <FormSection
@@ -250,11 +257,7 @@ function App(){
             </div>
             
             <div>
-                <Pdf targetRef={ref} filename="file.pdf" options={options} scale={1}>
-                    {({toPdf}) => (
-                        <button onClick={toPdf}>Generate pdf</button>
-                    )}
-                </Pdf>
+                <button className="form-button" onClick={generatePDF} type="button">Generate PDF</button>
             </div>
         </div>
     )
