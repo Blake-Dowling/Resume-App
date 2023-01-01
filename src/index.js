@@ -125,7 +125,10 @@ function App(){
     }
 
     /* Layout of main app page */
-
+    const personalInfoFields = ["name", "objective", "phone", "email", "website", "github", "linkedin"]
+    const educationFields = ["certificate", "institution", "dates", "location"]
+    const experienceFields = ["title", "company", "dates", "location"]
+    const projectFields = ["project name"]
     return(
         <div className="page">
             {/************************************************************/}
@@ -174,20 +177,34 @@ function App(){
             {/************************************************************/}
             {/******************** Right: input form ********************/}
             {/************************************************************/}
+            
             <div className="control">
-                <Form 
+                <h1>Personal Information</h1>
+                
+                    <EducationForm
+                        infoFields={personalInfoFields}
+                        index={0}
+                        dataset="personalInformation"
+                        formData={formData}
+                        handleChange={handleChange}
+                        removeEducation={removeEducation}
+                        addPoint={addPoint}
+                        removePoint={removePoint}
+                    />
+                {/* <Form 
                     index={0}
                     formData={formData}
                     dataset="personalInformation"
                     handleChange={handleChange}
-                    addEducation={addEducation}
-                />
+                    //addEducation={addEducation}
+                /> */}
                 {/********************Form: Education ********************/}
                 <h1>Education</h1>
                 <button type="button" onMouseDown={() => (addEducation("educationList"))}>Add Education</button>
                 {formData.educationList.map(educationObject => {
                     return (
                         <EducationForm
+                            infoFields={educationFields}
                             index={educationObject.index}
                             dataset="educationList"
                             formData={formData}
@@ -204,6 +221,7 @@ function App(){
                 {formData.experienceList.map(experienceObject => {
                     return (
                         <EducationForm
+                            infoFields={experienceFields}
                             index={experienceObject.index}
                             dataset="experienceList"
                             formData={formData}
@@ -220,6 +238,7 @@ function App(){
                 {formData.projectList.map(projectObject => {
                     return (
                         <EducationForm
+                            infoFields={projectFields}
                             index={projectObject.index}
                             dataset="projectList"
                             formData={formData}

@@ -7,19 +7,18 @@ export default function Form(props){
         <div>
             <form>
                 {/* Personal Information */}
-                <h1>Personal Information</h1>
                 <input
                     type="text"
                     placeholder="Name"
                     onChange={(event) => props.handleChange(event, props.dataset, props.index)}
-                    dataset={props.dataset}
+                    // dataset={props.dataset}
                     name="name"
                     value={props.formData[props.dataset][props.index].name}
                 />
                 <textarea
                     placeholder="objective"
                     onChange={(event) => props.handleChange(event, props.dataset, props.index)}
-                    dataset={props.dataset}
+                    // dataset={props.dataset}
                     name="objective"
                     value={props.formData[props.dataset][props.index].objective}
                 />
@@ -27,7 +26,7 @@ export default function Form(props){
                     type="text"
                     placeholder="phone"
                     onChange={(event) => props.handleChange(event, props.dataset, props.index)}
-                    dataset={props.dataset}
+                    // dataset={props.dataset}
                     name="phone"
                     value={props.formData[props.dataset][props.index].phone}
                 />
@@ -35,7 +34,7 @@ export default function Form(props){
                     type="text"
                     placeholder="email"
                     onChange={(event) => props.handleChange(event, props.dataset, props.index)}
-                    dataset={props.dataset}
+                    // dataset={props.dataset}
                     name="email"
                     value={props.formData[props.dataset][props.index].text}
                 />
@@ -43,7 +42,7 @@ export default function Form(props){
                     type="text"
                     placeholder="website"
                     onChange={(event) => props.handleChange(event, props.dataset, props.index)}
-                    dataset={props.dataset}
+                    // dataset={props.dataset}
                     name="website"
                     value={props.formData[props.dataset][props.index].website}
                 />
@@ -51,7 +50,7 @@ export default function Form(props){
                     type="text"
                     placeholder="Github"
                     onChange={(event) => props.handleChange(event, props.dataset, props.index)}
-                    dataset={props.dataset}
+                    // dataset={props.dataset}
                     name="github"
                     value={props.formData[props.dataset][props.index].github}
                 />
@@ -59,7 +58,7 @@ export default function Form(props){
                     type="text"
                     placeholder="Linkedin"
                     onChange={(event) => props.handleChange(event, props.dataset, props.index)}
-                    dataset={props.dataset}
+                    // dataset={props.dataset}
                     name="linkedin"
                     value={props.formData[props.dataset][props.index].linkedin}
                 />

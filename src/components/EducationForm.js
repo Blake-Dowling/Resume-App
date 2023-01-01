@@ -1,62 +1,79 @@
 import React from "react"
 export default function EducationForm(props){
+    //Passed data object
+    const dataObj = props.formData[props.dataset][props.index]
     return(
 <form>
-    
-        
-                {/* {props.formData.educationList.length > 0 && */}
                     <div>
-                        <input
+                        {/* For passed data object, map all of its properties to input fields 
+                        (if their values are strings) */}
+                        {Object.keys(dataObj).map((fieldKey) => {
+                            {console.log(fieldKey)}
+                            return ( (typeof dataObj[fieldKey] === 'string') ? 
+                                <input
+                                type="text"
+                                placeholder={fieldKey}
+                                onChange={(event) => props.handleChange(event, props.dataset, props.index)}
+                                name={fieldKey}
+                                value={dataObj[fieldKey]}
+                            /> : <></>
+                        )})}
+                        {/* <input
                             type="text"
                             placeholder="certificate"
                             onChange={(event) => props.handleChange(event, props.dataset, props.index)}
+
                             name="certificate"
-                            value={props.formData[props.dataset][props.index].certificate}
-                        />
-                        <input
+                            value={dataObj.certificate}
+                        /> */}
+                        {/* <input
                             type="text"
                             placeholder="institution"
                             onChange={(event) => props.handleChange(event, props.dataset, props.index)}
                             name="institution"
-                            value={props.formData[props.dataset][props.index].institution}
+                            value={dataObj.institution}
                         />
                         <input
                             type="text"
                             placeholder="dates"
                             onChange={(event) => props.handleChange(event, props.dataset, props.index)}
                             name="dates"
-                            value={props.formData[props.dataset][props.index].dates}
+                            value={dataObj.dates}
                         />
                         <input
                             type="text"
                             placeholder="location"
                             onChange={(event) => props.handleChange(event, props.dataset, props.index)}
                             name="location"
-                            value={props.formData[props.dataset][props.index].location}
-                        />
-                        <button
-                            type="button"
-                            onMouseDown={() => props.addPoint(props.index, props.dataset)}
-                            >Add Point
-                        </button>
-                        {props.formData[props.dataset][props.index].points.map(({pointIndex, pointContent}) => {
-                            // {console.log("points: " + JSON.stringify(props.formData[props.dataset][props.index].points[pointIndex].pointContent))}
-                                return (<div>
-                                            <input
-                                                type="text"
-                                                onChange={(event) => props.handleChange(event, props.dataset, props.index, pointIndex)}
-                                                // name={`points[${pointIndex}].pointContent`}
-                                                name="points"
-                                                value={props.formData[props.dataset][props.index].points[pointIndex].pointContent}
-                                            />
-                                            <button
-                                            type="button"
-                                            onMouseDown={() => props.removePoint(props.index, props.dataset, pointIndex)}
-                                            >Remove Point
-                                            </button>
-                                        </div>
-                                )
-                            }
+                            value={dataObj.location}
+                        /> */}
+                        {/* Check that information section's data object has a 'points' property. (Personal information
+                            does not have this property, so do not attempt to render.) */}
+                        {dataObj.points === undefined ? <></> : (
+                            <div>
+                                <button
+                                    type="button"
+                                    onMouseDown={() => props.addPoint(props.index, props.dataset)}
+                                    >Add Point
+                                </button>
+                                {dataObj.points.map(({pointIndex, pointContent}) => {
+                                        return (<div>
+                                                    <input
+                                                        type="text"
+                                                        onChange={(event) => props.handleChange(event, props.dataset, props.index, pointIndex)}
+                                                        name="points"
+                                                        value={dataObj.points[pointIndex].pointContent}
+                                                    />
+                                                    <button
+                                                    type="button"
+                                                    onMouseDown={() => props.removePoint(props.index, props.dataset, pointIndex)}
+                                                    >Remove Point
+                                                    </button>
+                                                </div>
+                                        )
+                                    }
+                                )}
+                            </div>
                         )}
                         
                         <button 
