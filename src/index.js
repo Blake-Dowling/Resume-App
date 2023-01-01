@@ -138,7 +138,7 @@ function App(){
                 {/******************** View: Education ********************/}
                 {formData.educationList.length > 0 && 
                     <div>
-                        <h1 className="heading-text">Education</h1>
+                        <h2 className="heading-text">Education</h2>
                         <hr/>
                         {formData.educationList.map(educationObject => {
                             return (
@@ -150,7 +150,7 @@ function App(){
                 {/******************** View: Experience ********************/}
                 {formData.experienceList.length > 0 && 
                     <div>
-                        <h1 className="heading-text">Experience</h1>
+                        <h2 className="heading-text">Experience</h2>
                         <hr/>
                         {formData.experienceList.map(experienceObject => {
                             return (
@@ -162,7 +162,7 @@ function App(){
                 {/******************** View: Projects ********************/}
                 {formData.projectList.length > 0 && 
                     <div>
-                        <h1 className="heading-text">Projects</h1>
+                        <h2 className="heading-text">Projects</h2>
                         <hr/>
                         {formData.projectList.map(projectObject => {
                             return (
@@ -177,7 +177,7 @@ function App(){
             {/************************************************************/}
             
             <div className="control">
-                <h1>Personal Information</h1>
+                <h2>Personal Information</h2>
                 
                     <FormSection
                         infoFields={personalInfoFields}
@@ -197,7 +197,7 @@ function App(){
                     //addSection={addSection}
                 /> */}
                 {/********************Form: Education ********************/}
-                <h1>Education</h1>
+                <h2>Education</h2>
                 <button type="button" onMouseDown={() => (addSection("educationList"))}>Add Education</button>
                 {formData.educationList.map(educationObject => {
                     return (
@@ -214,7 +214,7 @@ function App(){
                     )
                 })}
                 {/******************** Form: Experience ********************/}
-                <h1>Experience</h1>
+                <h2>Experience</h2>
                 <button type="button" onMouseDown={() => (addSection("experienceList"))}>Add Experience</button>
                 {formData.experienceList.map(experienceObject => {
                     return (
@@ -231,7 +231,7 @@ function App(){
                     )
                 })}
                 {/******************** Form: Projects ********************/}
-                <h1>Projects</h1>
+                <h2>Projects</h2>
                 <button type="button" onMouseDown={() => (addSection("projectList"))}>Add Project</button>
                 {formData.projectList.map(projectObject => {
                     return (

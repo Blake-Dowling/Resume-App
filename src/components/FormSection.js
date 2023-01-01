@@ -10,17 +10,26 @@ export default function FormSection(props){
                         {/************************************************************/}
                         {/* For passed data object, map all of its properties to input fields 
                         (if their values are strings) */}
-                        {Object.keys(dataObj).map((fieldKey) => {
-                            {console.log(fieldKey)}
-                            return ( (typeof dataObj[fieldKey] === 'string') ? 
-                                <input
-                                type="text"
-                                placeholder={fieldKey}
-                                onChange={(event) => props.handleChange(event, props.dataset, props.index)}
-                                name={fieldKey}
-                                value={dataObj[fieldKey]}
-                            /> : <></>
-                        )})}
+                        <div className="form-input-container">
+                            {Object.keys(dataObj).map((fieldKey) => {
+                                {console.log(fieldKey)}
+                                return ( (typeof dataObj[fieldKey] === 'string') ? 
+                                    <div className="form-input-object">
+                                        
+                                        <input
+                                            className="form-input"
+                                            type="text"
+                                            // placeholder={fieldKey}
+                                            onChange={(event) => props.handleChange(event, props.dataset, props.index)}
+                                            name={fieldKey}
+                                            value={dataObj[fieldKey]}
+                                        /> 
+                                        <p className="form-input-field">
+                                            {fieldKey}
+                                        </p>
+                                    </div> : <></>
+                            )})}
+                        </div>
                         {/************************************************************/}
                         {/******************** Add-Points Button ********************/}
                         {/************************************************************/}

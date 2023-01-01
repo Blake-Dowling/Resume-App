@@ -32,7 +32,7 @@ export default function DataSection(props){
                 <div className="points-container">
                     {props.dataset.points.map((pointObj) => {return (
                         <ul>
-                        <li className="point">{pointObj.pointContent}</li>
+                            <li className="point">{pointObj.pointContent}</li>
                         </ul>
                     )})}
                 </div>
