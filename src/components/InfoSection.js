@@ -1,6 +1,6 @@
 import React from "react"
 
-export default function Education(props){
+export default function DataSection(props){
     return (
         <div className="section--container">
             <div className="section--item">
@@ -28,16 +28,14 @@ export default function Education(props){
                         </div>
                     }
                 </div>
-                {/* {props.dataset.points.length > 0 && */}
                 {/* Bullet points */}
-                    <div className="points-container">
-                        {props.dataset.points.map((pointObj) => {return (
-                            <ul>
-                             <li className="point">{pointObj.pointContent}</li>
-                             </ul>
-                        )})}
-                    </div>
-                {/* } */}
+                <div className="points-container">
+                    {props.dataset.points.map((pointObj) => {return (
+                        <ul>
+                        <li className="point">{pointObj.pointContent}</li>
+                        </ul>
+                    )})}
+                </div>
             </div>
         </div>
     )

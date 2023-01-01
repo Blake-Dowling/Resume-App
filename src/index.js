@@ -1,12 +1,10 @@
 import React from "react"
 import ReactDOM from "react-dom"
 import Pdf from "react-to-pdf"
-import ReactToPdf from "react-to-pdf"
 import "./style.css"
 import Heading from "./components/Heading.js"
-import Education from "./components/Education.js"
-import Form from "./components/Form.js"
-import EducationForm from "./components/EducationForm.js"
+import InfoSection from "./components/InfoSection.js"
+import FormSection from "./components/FormSection.js"
 const ref = React.createRef()
 const options = {
 
@@ -60,7 +58,7 @@ function App(){
                  }
         })
     }
-    function addEducation(dataset){
+    function addSection(dataset){
         setFormData(prevFormData => {
             return {
                 ...prevFormData,
@@ -77,7 +75,7 @@ function App(){
             }
         })
     }
-    function removeEducation(index, dataset){
+    function removeSection(index, dataset){
         setFormData(prevFormData => {
             let newArr = prevFormData[dataset].map(i => ({...i})) //Copy
             //old data array
@@ -144,7 +142,7 @@ function App(){
                         <hr/>
                         {formData.educationList.map(educationObject => {
                             return (
-                                <Education dataset={educationObject}/>
+                                <InfoSection dataset={educationObject}/>
                             )}
                         )}
                     </div>
@@ -156,7 +154,7 @@ function App(){
                         <hr/>
                         {formData.experienceList.map(experienceObject => {
                             return (
-                                <Education dataset={experienceObject}/>
+                                <InfoSection dataset={experienceObject}/>
                             )}
                         )}
                     </div>
@@ -168,7 +166,7 @@ function App(){
                         <hr/>
                         {formData.projectList.map(projectObject => {
                             return (
-                                <Education dataset={projectObject}/>
+                                <InfoSection dataset={projectObject}/>
                             )}
                         )}
                     </div>
@@ -181,13 +179,13 @@ function App(){
             <div className="control">
                 <h1>Personal Information</h1>
                 
-                    <EducationForm
+                    <FormSection
                         infoFields={personalInfoFields}
                         index={0}
                         dataset="personalInformation"
                         formData={formData}
                         handleChange={handleChange}
-                        removeEducation={removeEducation}
+                        removeSection={removeSection}
                         addPoint={addPoint}
                         removePoint={removePoint}
                     />
@@ -196,20 +194,20 @@ function App(){
                     formData={formData}
                     dataset="personalInformation"
                     handleChange={handleChange}
-                    //addEducation={addEducation}
+                    //addSection={addSection}
                 /> */}
                 {/********************Form: Education ********************/}
                 <h1>Education</h1>
-                <button type="button" onMouseDown={() => (addEducation("educationList"))}>Add Education</button>
+                <button type="button" onMouseDown={() => (addSection("educationList"))}>Add Education</button>
                 {formData.educationList.map(educationObject => {
                     return (
-                        <EducationForm
+                        <FormSection
                             infoFields={educationFields}
                             index={educationObject.index}
                             dataset="educationList"
                             formData={formData}
                             handleChange={handleChange}
-                            removeEducation={removeEducation}
+                            removeSection={removeSection}
                             addPoint={addPoint}
                             removePoint={removePoint}
                         />
@@ -217,16 +215,16 @@ function App(){
                 })}
                 {/******************** Form: Experience ********************/}
                 <h1>Experience</h1>
-                <button type="button" onMouseDown={() => (addEducation("experienceList"))}>Add Experience</button>
+                <button type="button" onMouseDown={() => (addSection("experienceList"))}>Add Experience</button>
                 {formData.experienceList.map(experienceObject => {
                     return (
-                        <EducationForm
+                        <FormSection
                             infoFields={experienceFields}
                             index={experienceObject.index}
                             dataset="experienceList"
                             formData={formData}
                             handleChange={handleChange}
-                            removeEducation={removeEducation}
+                            removeSection={removeSection}
                             addPoint={addPoint}
                             removePoint={removePoint}
                         />
@@ -234,16 +232,16 @@ function App(){
                 })}
                 {/******************** Form: Projects ********************/}
                 <h1>Projects</h1>
-                <button type="button" onMouseDown={() => (addEducation("projectList"))}>Add Project</button>
+                <button type="button" onMouseDown={() => (addSection("projectList"))}>Add Project</button>
                 {formData.projectList.map(projectObject => {
                     return (
-                        <EducationForm
+                        <FormSection
                             infoFields={projectFields}
                             index={projectObject.index}
                             dataset="projectList"
                             formData={formData}
                             handleChange={handleChange}
-                            removeEducation={removeEducation}
+                            removeSection={removeSection}
                             addPoint={addPoint}
                             removePoint={removePoint}
                         />

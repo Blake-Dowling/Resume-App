@@ -1,10 +1,13 @@
 import React from "react"
-export default function EducationForm(props){
+export default function FormSection(props){
     //Passed data object
     const dataObj = props.formData[props.dataset][props.index]
     return(
-<form>
+        <form>
                     <div>
+                        {/************************************************************/}
+                        {/******************** Form Inputs ********************/}
+                        {/************************************************************/}
                         {/* For passed data object, map all of its properties to input fields 
                         (if their values are strings) */}
                         {Object.keys(dataObj).map((fieldKey) => {
@@ -18,35 +21,9 @@ export default function EducationForm(props){
                                 value={dataObj[fieldKey]}
                             /> : <></>
                         )})}
-                        {/* <input
-                            type="text"
-                            placeholder="certificate"
-                            onChange={(event) => props.handleChange(event, props.dataset, props.index)}
-
-                            name="certificate"
-                            value={dataObj.certificate}
-                        /> */}
-                        {/* <input
-                            type="text"
-                            placeholder="institution"
-                            onChange={(event) => props.handleChange(event, props.dataset, props.index)}
-                            name="institution"
-                            value={dataObj.institution}
-                        />
-                        <input
-                            type="text"
-                            placeholder="dates"
-                            onChange={(event) => props.handleChange(event, props.dataset, props.index)}
-                            name="dates"
-                            value={dataObj.dates}
-                        />
-                        <input
-                            type="text"
-                            placeholder="location"
-                            onChange={(event) => props.handleChange(event, props.dataset, props.index)}
-                            name="location"
-                            value={dataObj.location}
-                        /> */}
+                        {/************************************************************/}
+                        {/******************** Add-Points Button ********************/}
+                        {/************************************************************/}
                         {/* Check that information section's data object has a 'points' property. (Personal information
                             does not have this property, so do not attempt to render.) */}
                         {dataObj.points === undefined ? <></> : (
@@ -56,6 +33,9 @@ export default function EducationForm(props){
                                     onMouseDown={() => props.addPoint(props.index, props.dataset)}
                                     >Add Point
                                 </button>
+                                {/************************************************************/}
+                                {/******************** Point Inputs ********************/}
+                                {/************************************************************/}
                                 {dataObj.points.map(({pointIndex, pointContent}) => {
                                         return (<div>
                                                     <input
@@ -64,9 +44,10 @@ export default function EducationForm(props){
                                                         name="points"
                                                         value={dataObj.points[pointIndex].pointContent}
                                                     />
+                                                    {/******************** Remove-Points Button ********************/}
                                                     <button
-                                                    type="button"
-                                                    onMouseDown={() => props.removePoint(props.index, props.dataset, pointIndex)}
+                                                        type="button"
+                                                        onMouseDown={() => props.removePoint(props.index, props.dataset, pointIndex)}
                                                     >Remove Point
                                                     </button>
                                                 </div>
@@ -75,17 +56,21 @@ export default function EducationForm(props){
                                 )}
                             </div>
                         )}
-                        
-                        <button 
-                            type="button" 
-                            onMouseDown={() => props.removeEducation(props.index, props.dataset)}>Remove 
-                                {props.dataset === "educationList" ? " Education" :
-                                  props.dataset === "experienceList" ? " Experience" :
-                                  props.dataset === "projectList" ? " Project" :
-                                                   "Item" }
-                        </button>
+                        {/************************************************************/}
+                        {/******************** Remove-Section Button ********************/}
+                        {/************************************************************/}
+                        {props.dataset === "personalInformation" ? <></> :
+                            <button 
+                                type="button" 
+                                onMouseDown={() => props.removeSection(props.index, props.dataset)}>Remove 
+                                    {props.dataset === "educationList" ? " Education" :
+                                    props.dataset === "experienceList" ? " Experience" :
+                                    props.dataset === "projectList" ? " Project" :
+                                                    "Item" }
+                            </button>
+                        }
                     </div>
-                {/* } */}
-</form>
+                                
+        </form>
     )
 }
