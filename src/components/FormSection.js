@@ -11,8 +11,7 @@ export default function FormSection(props){
                         {/* For passed data object, map all of its properties to input fields 
                         (if their values are strings) */}
                         <div className="form-input-container">
-                            {Object.keys(dataObj).map((fieldKey) => {
-                                {console.log(fieldKey)}
+                            {Object.keys(dataObj).map((fieldKey, keyIndex) => {
                                 return ( (typeof dataObj[fieldKey] === 'string') ? 
                                     <div className="form-input-object">
                                         
@@ -25,7 +24,8 @@ export default function FormSection(props){
                                             value={dataObj[fieldKey]}
                                         /> 
                                         <p className="form-input-field">
-                                            {fieldKey}
+                                            {/* {fieldKey} */}
+                                            {props.infoFields[keyIndex - 1]}
                                         </p>
                                     </div> : <></>
                             )})}
@@ -75,7 +75,8 @@ export default function FormSection(props){
                             <button 
                                 className="form-button"
                                 type="button" 
-                                onMouseDown={() => props.removeSection(props.index, props.dataset)}>Remove 
+                                onMouseDown={() => {props.removeSection(props.index, props.dataset)}
+                                    }>Remove 
                                     {props.dataset === "educationList" ? " Education" :
                                     props.dataset === "experienceList" ? " Experience" :
                                     props.dataset === "projectList" ? " Project" :
