@@ -4,7 +4,7 @@ export default function FormSection(props){
     const dataObj = props.formData[props.dataset][props.index]
     return(
         <form>
-                    <div>
+                    <div className="form-object-container">
                         {/************************************************************/}
                         {/******************** Form Inputs ********************/}
                         {/************************************************************/}
@@ -73,7 +73,7 @@ export default function FormSection(props){
                         {/************************************************************/}
                         {props.dataset === "personalInformation" ? <></> :
                             <button 
-                                className="form-button"
+                                className="form-button-remove"
                                 type="button" 
                                 onMouseDown={() => {props.removeSection(props.index, props.dataset)}
                                     }>Remove 

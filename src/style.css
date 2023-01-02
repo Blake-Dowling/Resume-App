@@ -10,7 +10,7 @@ body{
     background: white;
     /* background: #d8cdaa; */
     /* background: linear-gradient(115deg, midnightblue 0% 45%, white 45% 50%, yellow); */
-    /* background: linear-gradient(115deg, white 0% 45%, deepskyblue 50% 50%, white 55% 100%); */
+    background: linear-gradient(115deg, midnightblue 0% 45%, deepskyblue 50% 50%, white 55% 100%);
     animation: gradient 20s ease infinite;
     background-attachment: fixed;
     background-size: 400% 400%;
@@ -51,16 +51,7 @@ h2{
     color: black;
     filter: drop-shadow();
 }
-.form-button{
-    margin: .4em;
-    padding: .8em;
-    background-color: rgb(255, 255, 255);
-    border: none;
-    border-radius: 3px;
-    filter: drop-shadow(5px 5px 5px var(--drop-shadow-color));
-    font-family: inherit;
 
-}
 hr{
     border: none;
     color: black;
@@ -186,12 +177,87 @@ img{
     padding: 2em;
     overflow: scroll;
 }
+
+
+
+.form-section-heading{
+    margin-right: auto;
+}
+.up-button, .down-button{
+    position: relative;
+    padding: 5px;
+    margin: .4em;
+    background: rgba(255, 255, 255, 0);
+    border: none;
+}
+.down-button:after{
+    position: relative;
+    top: -5px;
+    display: block;
+    content: "";
+    width: 1em;
+    height: 1em;
+    border-left: solid 2px var(--form-font-color);
+    border-bottom: solid 2px var(--form-font-color);
+    transform: rotate(-45deg)
+}
+.up-button:after{
+    position: relative;
+    top: 5px;
+    display: block;
+    content: "";
+    width: 1em;
+    height: 1em;
+    border-left: solid 2px var(--form-font-color);
+    border-bottom: solid 2px var(--form-font-color);
+    transform: rotate(135deg)
+}
+.form-section{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.form-section-title{
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.form-data-button{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.form-data{
+    display: block;
+    max-height: 500px;
+    transition-duration: .8s;
+    transition-property: opacity, max-height, transform;
+}
+
+.form-data[hidden]{
+    transition-duration: .8s;
+    transition-property: opacity, max-height, transform;
+    transition-delay: 0;
+    max-height: 0px;
+    transform: scale(0);
+    opacity: 0;
+}
+.form-section:hover{
+    border: solid 1px black;
+    border-radius: 5px;
+}
+.form-object-container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.form-object-container:hover{
+    background: rgba(255, 255, 255, 0.107);
+}
 .form-input-container{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    /* justify-content: left;
-    flex-wrap: wrap; */
-}
+} 
 .form-input-object{
     width: 1fr;
     position: relative;
@@ -219,6 +285,19 @@ img{
     margin-left: .4em;
     transition-property: top, font-size;
     transition-duration: .2s;
+}
+.form-button, .form-button-remove{
+    margin: .4em;
+    padding: .8em;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 3px;
+    filter: drop-shadow(5px 5px 5px var(--drop-shadow-color));
+    font-family: inherit;
+
+}
+.form-button-remove{
+
 }
 .form-input:focus + .form-input-field, 
 .form-input:not([value=""]) + .form-input-field{

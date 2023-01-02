@@ -4,7 +4,6 @@ import {jsPDF} from "jspdf"
 import "./style.css"
 import Heading from "./components/Heading.js"
 import InfoItem from "./components/InfoItem.js"
-import InfoSection from "./components/InfoSection.js"
 import FormSection from "./components/FormSection.js"
 const ref = React.createRef()
 const options = {
@@ -32,7 +31,6 @@ function App(){
             experienceList: [],
             projectList: []
     })
-    const [sectionList, setSectionList] = React.useState([])
     /* Function to change state objects */
     function handleChange(event, dataset, index, pointNum){
         // name: input name property, value: input field value
@@ -61,9 +59,6 @@ function App(){
     }
     function addSection(dataset){
         setFormData(prevFormData => {
-            if(prevFormData[dataset].length == 0){
-                editSectionList(dataset, "add")
-            }
             return {
                 ...prevFormData,
                 [dataset]: dataset !== "projectList" ? 
@@ -96,9 +91,6 @@ function App(){
                 newArr[i].index = newArr[i].index - 1;
             }
             newArr.splice(index, 1) //Remove element at index
-            if(newArr.length == 0){
-                editSectionList(dataset, "remove")
-            }
                 return ({ //return new data object with updated array
                     ...prevFormData,
                     [dataset]: newArr
@@ -135,35 +127,21 @@ function App(){
             })
         })
     }
-
-    function editSectionList(sectionName, operation){
-        
-        setSectionList(prevSectionList => {
-            let newSectionList = prevSectionList.map(i => (i))
-            if(operation === "add"){
-                newSectionList.push(sectionName)
-            } else if(operation === "remove"){
-                newSectionList.splice(newSectionList.indexOf(sectionName), 1)
-            }
-            return ( newSectionList )
-        }
-        )
-    }
-    function orderFormSectionList(sectionIndex, operation){
-        setFormSectionList(prevFormSectionList => {
-            let newArr = prevFormSectionList.map(i => (i))
+    function ordersectionList(sectionIndex, operation){
+        setSectionList(prevsectionList => {
+            let newArr = prevsectionList.map(i => (i))
             if(operation === "up" && sectionIndex - 1 >= 1){
                 newArr[sectionIndex - 1] = newArr[sectionIndex]
-                newArr[sectionIndex] = prevFormSectionList[sectionIndex - 1]
+                newArr[sectionIndex] = prevsectionList[sectionIndex - 1]
             }
-            else if(operation === "down" && sectionIndex + 1 < prevFormSectionList.length){
+            else if(operation === "down" && sectionIndex + 1 < prevsectionList.length){
                 newArr[sectionIndex + 1] = newArr[sectionIndex]
-                newArr[sectionIndex] = prevFormSectionList[sectionIndex + 1]
+                newArr[sectionIndex] = prevsectionList[sectionIndex + 1]
             }
-            console.log(newArr)
             return (newArr)
         })
     }
+
     function generatePDF(){
         const doc = jsPDF("p", "pt", "a4")
         doc.html(document.querySelector(".view"), {
@@ -172,19 +150,28 @@ function App(){
             }
         })
     }
-    /* Layout of main app page */
+
     const personalInfoFields = ["name", "objective", "phone", "email", "website", "github", "linkedin"]
     const educationFields = ["certificate", "institution", "dates", "location"]
     const experienceFields = ["title", "company", "dates", "location"]
     const projectFields = ["project name"]
 
-    const [formSectionList, setFormSectionList] = React.useState([
-        {sectionName: "personalInformation", fields: personalInfoFields},
-        {sectionName: "educationList", fields: educationFields},
-        {sectionName: "experienceList", fields: experienceFields},
-        {sectionName: "projectList", fields: projectFields}
+    const [sectionList, setSectionList] = React.useState([
+        {sectionName: "personalInformation", fields: personalInfoFields, title: "Personal Information", visible: true},
+        {sectionName: "educationList", fields: educationFields, title: "Education", visible: true},
+        {sectionName: "experienceList", fields: experienceFields, title: "Experience", visible: true},
+        {sectionName: "projectList", fields: projectFields, title: "Projects", visible: true}
     ])
-
+    function changeVisibility(sectionIndex){
+        return (setSectionList(prevSectionList => {
+            let newSectionObject = prevSectionList[sectionIndex]
+            newSectionObject.visible = !newSectionObject.visible
+            let newSectionList = prevSectionList.map(i => (i))
+            newSectionList[sectionIndex] = newSectionObject
+            return (newSectionList)
+        }))
+    }
+    /* Layout of main app page */
     return(
         <div className="page">
             {/************************************************************/}
@@ -194,13 +181,12 @@ function App(){
                 {/******************** View: Personal Information ********************/}
                 <Heading personalInfo={formData.personalInformation[0]}/> 
                 {/******************** View: Information Sections ********************/}
-                {formSectionList.map((formSectionObject) =>
+                {sectionList.map((formSectionObject) =>
                     {const section = formSectionObject.sectionName
-                        console.log(formData[section].length && section !== "personalInformation")
                         return (
                         formData[section].length > 0 && section !== "personalInformation" &&
                         <div>
-                            <h2 className="heading-text">{section}</h2>
+                            <h2 className="heading-text">{formSectionObject.title}</h2>
                             <hr/>
                             {formData[section].map(sectionObject => {
                                 return (
@@ -209,59 +195,51 @@ function App(){
                             )}
                         </div>)}
                 )}
-                {/* {sectionList.map(section =>
-                    section.length > 0 && 
-                        <div>
-                            <h2 className="heading-text">{section}</h2>
-                            <hr/>
-                            {formData[section].map(sectionObject => {
-                                return (
-                                    <InfoItem dataset={sectionObject}/>
-                                )}
-                            )}
-                        </div>
-                )} */}
             </div>
             {/************************************************************/}
             {/******************** Right: input form ********************/}
             {/************************************************************/}
-            
             <div className="control">
-                {/********************Form: Education ********************/}
-                
-
-                {Object.keys(formSectionList).map((sectionKey, sectionIndex) => {
-                    const sectionName = formSectionList[sectionIndex].sectionName
-                    const fields = formSectionList[sectionIndex].fields
+                {Object.values(sectionList).map((sectionValue, sectionIndex) => {
+                    const sectionName = sectionValue.sectionName
+                    const fields = sectionValue.fields
                     return(
-                    <div>
-                        {sectionName !== "personalInformation"&& 
-                        <div>
-                            <button onClick={() => orderFormSectionList(sectionIndex, "up")}>Up</button>
-                            <button onClick={() => orderFormSectionList(sectionIndex, "down")}>Down</button>
-                        </div>}
-                        <h2>{sectionName}</h2>
-                        {sectionName !== "personalInformation" &&
-                            <button 
-                                className="form-button" 
-                                type="button" 
-                                onMouseDown={() => (addSection(sectionName))}
-                                >Add {sectionName}
-                            </button>}
-                        {formData[sectionName].map(dataObject => {
-                            return (
-                                <FormSection
-                                    infoFields={fields}
-                                    index={dataObject.index}
-                                    dataset={sectionName}
-                                    formData={formData}
-                                    handleChange={handleChange}
-                                    removeSection={removeSection}
-                                    addPoint={addPoint}
-                                    removePoint={removePoint}
-                                />
-                            )
-                        })}
+                    <div className="form-section">
+                        <div className="form-section-title">
+                        <a className="form-data-button" onClick={() => (changeVisibility(sectionIndex))}></a>
+                            {sectionName !== "personalInformation" && 
+                            <div>
+                                <button className="up-button" onClick={() => ordersectionList(sectionIndex, "up")}></button>
+                                <button className="down-button" onClick={() => ordersectionList(sectionIndex, "down")}></button>
+                            </div>}
+                            <h2 className="form-section-heading">{sectionValue.title}</h2>
+                            {sectionName !== "personalInformation" &&
+                                <button 
+                                    className="form-button" 
+                                    type="button" 
+                                    onClick={() => (addSection(sectionName))}
+                                    >Add {sectionValue.title}
+                                </button>
+                            }
+                        </div>
+                        
+                        {/* <div className="form-data" style={sectionValue.visible ? {} : {display: "none"}}> */}
+                        <div className="form-data" hidden={sectionValue.visible}>
+                            {formData[sectionName].map(dataObject => {
+                                return (
+                                    <FormSection
+                                        infoFields={fields}
+                                        index={dataObject.index}
+                                        dataset={sectionName}
+                                        formData={formData}
+                                        handleChange={handleChange}
+                                        removeSection={removeSection}
+                                        addPoint={addPoint}
+                                        removePoint={removePoint}
+                                    />
+                                )
+                            })}
+                        </div>
                 </div>)}
             )}
             </div>
