@@ -10,6 +10,34 @@ const options = {
 
 }
 function App(){
+    const [format, setFormat] = React.useState(
+        {
+            margins: 1
+        }
+    )
+    function changeFormat(event){
+        const {name, value} =  event.target
+
+        let newValue = value
+        return setFormat(prevFormat => {
+            return (
+                {
+                    ...prevFormat,
+                    [name]: newValue
+                }
+            )
+        })
+    }
+    let resumeStyle = {
+        ["--width"]: "600px",
+        width: "var(--width)",
+        height: "calc(1.2942 * 600px)",
+        background: "white",
+        overflow: "scroll",
+        display: "flex",
+        ["flex-flow"]: "column",
+        ["padding"]: `calc(${((format.margins / 8.5))} * var(--width))`
+    }
     /* State object for all resume information */
     const [formData, setFormData] = React.useState(
         {
@@ -31,6 +59,7 @@ function App(){
             experienceList: [],
             projectList: []
     })
+
     /* Function to change state objects */
     function handleChange(event, dataset, index, pointNum){
         // name: input name property, value: input field value
@@ -163,6 +192,7 @@ function App(){
         {sectionName: "projectList", fields: projectFields, title: "Projects", visible: true}
     ])
     function changeVisibility(sectionIndex){
+        
         return (setSectionList(prevSectionList => {
             let newSectionObject = prevSectionList[sectionIndex]
             newSectionObject.visible = !newSectionObject.visible
@@ -171,13 +201,16 @@ function App(){
             return (newSectionList)
         }))
     }
+
     /* Layout of main app page */
     return(
+        
         <div className="page">
             {/************************************************************/}
             {/******************** Left: resume view ********************/}
             {/************************************************************/}
-            <div ref={ref} className="view">
+            <div ref={ref} style={resumeStyle}>
+            {/* <div ref={ref} className="view"> */}
                 {/******************** View: Personal Information ********************/}
                 <Heading personalInfo={formData.personalInformation[0]}/> 
                 {/******************** View: Information Sections ********************/}
@@ -187,10 +220,13 @@ function App(){
                         formData[section].length > 0 && section !== "personalInformation" &&
                         <div>
                             <h2 className="heading-text">{formSectionObject.title}</h2>
-                            <hr/>
+                            <hr className="hr-section"/>
                             {formData[section].map(sectionObject => {
                                 return (
-                                    <InfoItem dataset={sectionObject}/>
+                                    <div>
+                                        <InfoItem dataset={sectionObject}/>
+                                        <hr className="hr-section-item" hidden={sectionObject.index < formData[section].length - 1 ? false : true}/>
+                                    </div>
                                 )}
                             )}
                         </div>)}
@@ -224,7 +260,7 @@ function App(){
                         </div>
                         
                         {/* <div className="form-data" style={sectionValue.visible ? {} : {display: "none"}}> */}
-                        <div className="form-data" hidden={sectionValue.visible}>
+                        <div className="form-data" hidden={!sectionValue.visible}>
                             {formData[sectionName].map(dataObject => {
                                 return (
                                     <FormSection
@@ -244,8 +280,21 @@ function App(){
             )}
             </div>
             
-            <div>
+            <div className="format-bar">
                 <button className="form-button" onClick={generatePDF} type="button">Generate PDF</button>
+            
+                <div className="form-input-object">
+                                            <input
+                                                className="form-input"
+                                                type="text"
+                                                onChange={(event) => changeFormat(event)}
+                                                name="margins"
+                                                value={format.margins}
+                                            /> 
+                                            <p className="form-input-field">
+                                                margins
+                                            </p>
+                </div>
             </div>
         </div>
     )

@@ -14,7 +14,6 @@ export default function FormSection(props){
                             {Object.keys(dataObj).map((fieldKey, keyIndex) => {
                                 return ( (typeof dataObj[fieldKey] === 'string') ? 
                                     <div className="form-input-object">
-                                        
                                         <input
                                             className="form-input"
                                             type="text"
@@ -84,7 +83,6 @@ export default function FormSection(props){
                             </button>
                         }
                     </div>
-                                
         </form>
     )
 }
