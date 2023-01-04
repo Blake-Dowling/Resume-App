@@ -5,6 +5,7 @@ import "./style.css"
 import Heading from "./components/Heading.js"
 import InfoItem from "./components/InfoItem.js"
 import FormSection from "./components/FormSection.js"
+import Popup from "./components/Popup.js"
 const ref = React.createRef()
 const options = {
 
@@ -89,7 +90,6 @@ function App(){
             return (newFormatList)
         })
     }
-    console.log(format[1].formatValue)
     let resumeStyle = {
         ["--width"]: "600px",
         width: "var(--width)",
@@ -113,6 +113,7 @@ function App(){
         ["--subsection-line-color"]: format[10].formatValue
         
     }
+
     /* State object for all resume information */
     const [formData, setFormData] = React.useState(
         {
@@ -276,8 +277,28 @@ function App(){
             return (newSectionList)
         }))
     }
-
+    const [popupState, setPopupState] = React.useState({visible: false, xpos: "0px", ypos: "0px"})
+    const popupStyle = {
+        position: "absolute",
+        width: "200px",
+        height: "80px",
+        left: popupState.xpos,
+        top: popupState.ypos,
+        border: "1px solid black"
+    }
+    function itemPopup(event){
+        console.log(event.clientX, event.clientY)
+        setPopupState(prevPopup => {
+            return ({...prevPopup, visible: true, xpos: `${event.clientX}px`, ypos: `${event.clientY}px`})
+        })
+    }
+    function popupHide(){
+        setPopupState(prevPopup => {
+            return ({...prevPopup, visible: false})
+        })
+    }
     /* Layout of main app page */
+
     return(
         
         <div className="page">
@@ -294,7 +315,7 @@ function App(){
                         return (
                         formData[section].length > 0 && section !== "personalInformation" &&
                         <div>
-                            <h2 className="heading-text">{formSectionObject.title}</h2>
+                            <h2 className="heading-text" onMouseOver={(event) => itemPopup(event)}>{formSectionObject.title}</h2>
                             <hr className="hr-section"/>
                             {formData[section].map(sectionObject => {
                                 return (
@@ -353,8 +374,13 @@ function App(){
                         </div>
                 </div>)}
             )}
+            <Popup
+                visible={popupState.visible}
+                popupStyle={popupStyle}
+                popupHide={popupHide}
+            />
             </div>
-            
+
             <div className="format-bar">
                 <button className="form-button" onClick={generatePDF} type="button">Generate PDF</button>
                 {format.map( formatObj => {
