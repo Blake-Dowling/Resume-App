@@ -1,6 +1,7 @@
 import React from "react"
-const colors = ["black", "white", "grey", "deepskyblue", "blue", "red", "yellow"]
+const colors = ["black", "white", "lightgrey", "deepskyblue", "gold", "grey", "blue", "red", "yellow"]
 const fontSizes = [".2em", ".4em", ".6em", ".8em", "1em", "1.2em", "1.4em", "1.6em"] 
+const fonts = ["Times New Roman", "Roboto", "Khula", "Rubik", "Cormorant Garamond", "Arial", "Cambria", "Calibri", "Helvetica", "Courier New", "Geneva", "Georgia", "Palatino", "Lucida Grande", "Trebuchet MS"]
 export default [{
     formatId: 0,
     formatValue: 1.0,
@@ -120,5 +121,17 @@ export default [{
     formatValue: "white",
     formatName: "background",
     formatOptions: [...colors]          
+},
+{
+    formatId: 20,
+    formatValue: "Times New Roman",
+    formatName: "font",
+    formatOptions: [...fonts]          
+},
+{
+    formatId: 21,
+    formatValue: "1",
+    formatName: "columns",
+    formatOptions: ["1", "2", "3", "4"]          
 }
 ]

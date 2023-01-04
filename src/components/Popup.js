@@ -15,6 +15,7 @@ export default function Popup(props){
                     const formatOptions = formatObj.formatOptions
                     return (
                         <div className="form-input-object">
+                                                <div className="form-input-object">
                                                     <select
                                                         className="form-input"
                                                         id="form-input"
@@ -30,6 +31,7 @@ export default function Popup(props){
                                                     <p className="form-input-field" htmlFor="form-input">
                                                         {formatName}
                                                     </p>
+                                                </div>
                         </div>)}
                 )}
             </div>

@@ -2,7 +2,7 @@ import React from "react"
 
 export default function InfoItem(props){
     return (
-        <div className="section--container">
+        <div className="section-item-container">
             <div className="section--item">
                 {/* Title 1 (certificate / role) */}
                 {props.dataset.certificate &&

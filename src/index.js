@@ -37,6 +37,8 @@ function App(){
         ["flex-flow"]: "column",
         ["--padding-width"]: `${(format[0].formatValue / 8.5) * format[18].formatValue}`,
         filter: "drop-shadow(5px 5px 5px var(--drop-shadow-color))",
+        ["font-family"]: format[20].formatValue,
+        ["--columns"]: format[21].formatValue,
         ["--heading-font-size"]: format[5].formatValue,
         ["--heading-color"]: format[6].formatValue,
         ["--title-1-font-size"]: format[1].formatValue,
@@ -226,7 +228,9 @@ function App(){
         height: "auto",
         left: popupState.xpos,
         top: popupState.ypos,
-        border: "1px solid black"
+        background: "white",
+        // border: "1px solid black",
+        padding: "4px"
     }
     function itemPopup(event){
         console.log(event.target.className)
@@ -239,7 +243,7 @@ function App(){
                         targetClass === "info-text" ? [11, 12] :
                         targetClass === "point" ? [13, 14, 15] :
                         targetClass === "section-info" ? [16, 17] :
-                        targetClass === "margin" ? [0, 19] : []
+                        targetClass === "margin" ? [0, 19, 20, 21] : []
         setPopupState(prevPopup => {
             return ({...prevPopup, attributeIndices: indices, visible: true, xpos: `${event.clientX}px`, ypos: `${event.clientY}px`})
         })
@@ -265,23 +269,28 @@ function App(){
                 {/******************** View: Personal Information ********************/}
                 <Heading personalInfo={formData.personalInformation[0]} itemPopup={itemPopup}/> 
                 {/******************** View: Information Sections ********************/}
+                <div className="section--container">
                 {sectionList.map((formSectionObject) =>
                     {const section = formSectionObject.sectionName
                         return (
                         formData[section].length > 0 && section !== "personalInformation" &&
-                        <div>
+                        
+                            <div className="section--block">
                             <h2 className="heading-text" onMouseOver={(event) => itemPopup(event)}>{formSectionObject.title}</h2>
                             <hr className="hr-section" onMouseOver={(event) => itemPopup(event)}/>
-                            {formData[section].map(sectionObject => {
+                            {Object.values(formData[section]).map((sectionObject, sectionIndex) => {
                                 return (
                                     <div>
                                         <InfoItem dataset={sectionObject} itemPopup={itemPopup}/>
-                                        <hr className="hr-section-item" onMouseOver={(event) => itemPopup(event)} hidden={sectionObject.index < formData[section].length - 1 ? false : true}/>
+                                        {sectionIndex < (formData[section].length - 1) &&
+                                            <hr className="hr-section-item" onMouseOver={(event) => itemPopup(event)} hidden={sectionObject.index < formData[section].length - 1 ? false : true}/>}
                                     </div>
                                 )}
                             )}
-                        </div>)}
+                            </div>
+                        )}
                 )}
+                </div>
                 </div>
             </div>
             {/************************************************************/}

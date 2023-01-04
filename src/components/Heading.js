@@ -1,7 +1,7 @@
 import React from "react"
 export default function Heading(props){
     return (
-        <header className="section--container">
+        <header className="section-item-container">
             {/* Name */}
             {props.personalInfo.name && 
                 <h1 className="heading-text" onMouseOver={(event) => props.itemPopup(event)}>{props.personalInfo.name}</h1>

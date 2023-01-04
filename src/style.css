@@ -1,4 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Khula:700);
+@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&family=Rubik&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500&display=swap);
 body{
     font-family: Khula;
     /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -41,7 +43,7 @@ body{
     --form-font-color: #a9a9a961;
     --drop-shadow-color: rgba(0, 0, 0, 0.139);
 }
-h1, h2, p{
+h1, h2, p, hr{
     margin: 0px;
 }
 h2{
@@ -54,7 +56,7 @@ h2{
     display: var(--section-line-display);
     border: none;
     background-color: var(--section-line-color);
-    width: 100%;
+    width: auto;
     height: 2px;
     /* box-shadow: 2.5px 2.5px 5px rgba(0, 0, 0, 0.185); */
 }
@@ -135,6 +137,14 @@ h2{
 }
 /* Section Container */
 .section--container{
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 1fr);
+}
+.section--block{
+    /* min-width: calc(100% / var(--columns));  */
+    padding: 10px;
+}
+.section-item-container{
     display: flex;
     flex-direction: column;
     align-items: left;
@@ -187,9 +197,14 @@ img{
 }
 .logo{
     object-fit: contain;
+    
 }
 #phone-logo{
     width: .8em;
+    /* -webkit-mask-image: url("./Phone-Logo2.png") center/contain;
+    -webkit-mask-size: 30px 30px;
+    mask-image: url("./Phone-Logo2.png") center/contain;
+    mask-size: 30px 30px;  */
 }
 #gmail-logo{
     width: 1em;
@@ -288,7 +303,6 @@ img{
 }
 .form-section:hover{
     border: solid 1px black;
-    border-radius: 5px;
 }
 .form-object-container{
     position: relative;
