@@ -12,3 +12,5 @@ Current Challenge: To account for multiple elements within a section, a function
 Experienced a bug while implementing deletion of array elements within state. Because there was JSX code referencing elements by index, the indices needed to be decremented before the state was changed. A small mistake of using variable assignment by reference caused the original array to be mutated. The bug was fixed by simply copying the array using the map function.
 The current challenge being addressed is implementing a modular 'section' JSX object. One obstacle with this is that the fields of different sections have different names.
 Implementing dynamic bullet points became a challenge, because I wanted to reuse existing functions. Deep nesting of attributes required dilligent debugging.
+1/4/2023
+Next to add will be more format properties such as margin, background, and font. Templates should be stored as 'formatState.js' elements and selected by the user. I am still unsure if sections and fields to be made customizable. Logos could then be selected. Displaying the form on top of the resume view will is desired, but unnecessary and may be too challenging.

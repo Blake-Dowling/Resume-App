@@ -6,79 +6,14 @@ import Heading from "./components/Heading.js"
 import InfoItem from "./components/InfoItem.js"
 import FormSection from "./components/FormSection.js"
 import Popup from "./components/Popup.js"
+import formatState from "./formatState.js"
 const ref = React.createRef()
 const options = {
 
 }
 function App(){
     const [format, setFormat] = React.useState(
-        [{
-            formatId: 0,
-            formatValue: 1.0,
-            formatName: "margins",
-            formatOptions: [0.25, 0.5, 0.75, 1.0]            
-        },
-        {
-            formatId: 1,
-            formatValue: "1em",
-            formatName: "title 1 size",
-            formatOptions: [".6em", ".8em", "1em", "1.2em"]            
-        },
-        {
-            formatId: 2,
-            formatValue: "black",
-            formatName: "title 1 color",
-            formatOptions: ["black", "blue", "red", "yellow"]            
-        },
-        {
-            formatId: 3,
-            formatValue: ".9em",
-            formatName: "title 2 size",
-            formatOptions: [".6em", ".8em", "1em", "1.2em"]            
-        },
-        {
-            formatId: 4,
-            formatValue: "black",
-            formatName: "title 2 color",
-            formatOptions: ["black", "blue", "red", "yellow"]            
-        },
-        {
-            formatId: 5,
-            formatValue: "1.5em",
-            formatName: "heading size",
-            formatOptions: [".6em", ".8em", "1em", "1.2em"]           
-        },
-        {
-            formatId: 6,
-            formatValue: "black",
-            formatName: "heading color",
-            formatOptions: ["black", "blue", "red", "yellow"]            
-        },
-        {
-            formatId: 7,
-            formatValue: "flex",
-            formatName: "section line",
-            formatOptions: ["flex", "none"]            
-        },
-        {
-            formatId: 8,
-            formatValue: "black",
-            formatName: "section line color",
-            formatOptions: ["black", "blue", "red", "yellow"]           
-        },
-        {
-            formatId: 9,
-            formatValue: "flex",
-            formatName: "sub-section line",
-            formatOptions: ["flex", "none"]            
-        },
-        {
-            formatId: 10,
-            formatValue: "black",
-            formatName: "sub-section line color",
-            formatOptions: ["black", "blue", "red", "yellow"]           
-        }
-    ]
+        formatState
     )
     function changeFormat(event, formatIndex){
         const {name, value} =  event.target
@@ -110,8 +45,14 @@ function App(){
         ["--section-line-display"]: format[7].formatValue,
         ["--section-line-color"]: format[8].formatValue,
         ["--subsection-line-display"]: format[9].formatValue,
-        ["--subsection-line-color"]: format[10].formatValue
-        
+        ["--subsection-line-color"]: format[10].formatValue,
+        ["--info-text-size"]: format[11].formatValue,
+        ["--info-text-color"]: format[12].formatValue,
+        ["--point-style"]: format[13].formatValue,
+        ["--point-text-size"]: format[14].formatValue,
+        ["--point-text-color"]: format[15].formatValue,
+        ["--section-info-size"]: format[16].formatValue,
+        ["--section-info-color"]: format[17].formatValue
     }
 
     /* State object for all resume information */
@@ -277,19 +218,28 @@ function App(){
             return (newSectionList)
         }))
     }
-    const [popupState, setPopupState] = React.useState({visible: false, xpos: "0px", ypos: "0px"})
+    const [popupState, setPopupState] = React.useState({attributeIndices: [], visible: false, xpos: "0px", ypos: "0px"})
     const popupStyle = {
         position: "absolute",
-        width: "200px",
-        height: "80px",
+        width: "auto",
+        height: "auto",
         left: popupState.xpos,
         top: popupState.ypos,
         border: "1px solid black"
     }
     function itemPopup(event){
-        console.log(event.clientX, event.clientY)
+        console.log(event.target.className)
+        const targetClass = event.target.className
+        const indices = targetClass === "title-1" ? [1, 2] :
+                        targetClass === "title-2" ? [3, 4] :
+                        targetClass === "heading-text" ? [5, 6] :
+                        targetClass === "hr-section" ? [7, 8] :
+                        targetClass === "hr-section-item" ? [9, 10] :
+                        targetClass === "info-text" ? [11, 12] :
+                        targetClass === "point" ? [13, 14, 15] :
+                        targetClass === "section-info" ? [16, 17] : []
         setPopupState(prevPopup => {
-            return ({...prevPopup, visible: true, xpos: `${event.clientX}px`, ypos: `${event.clientY}px`})
+            return ({...prevPopup, attributeIndices: indices, visible: true, xpos: `${event.clientX}px`, ypos: `${event.clientY}px`})
         })
     }
     function popupHide(){
@@ -305,10 +255,10 @@ function App(){
             {/************************************************************/}
             {/******************** Left: resume view ********************/}
             {/************************************************************/}
-            <div ref={ref} style={resumeStyle}>
+            <div ref={ref} style={resumeStyle} className="view">
             {/* <div ref={ref} className="view"> */}
                 {/******************** View: Personal Information ********************/}
-                <Heading personalInfo={formData.personalInformation[0]}/> 
+                <Heading personalInfo={formData.personalInformation[0]} itemPopup={itemPopup}/> 
                 {/******************** View: Information Sections ********************/}
                 {sectionList.map((formSectionObject) =>
                     {const section = formSectionObject.sectionName
@@ -316,12 +266,12 @@ function App(){
                         formData[section].length > 0 && section !== "personalInformation" &&
                         <div>
                             <h2 className="heading-text" onMouseOver={(event) => itemPopup(event)}>{formSectionObject.title}</h2>
-                            <hr className="hr-section"/>
+                            <hr className="hr-section" onMouseOver={(event) => itemPopup(event)}/>
                             {formData[section].map(sectionObject => {
                                 return (
                                     <div>
-                                        <InfoItem dataset={sectionObject}/>
-                                        <hr className="hr-section-item" hidden={sectionObject.index < formData[section].length - 1 ? false : true}/>
+                                        <InfoItem dataset={sectionObject} itemPopup={itemPopup}/>
+                                        <hr className="hr-section-item" onMouseOver={(event) => itemPopup(event)} hidden={sectionObject.index < formData[section].length - 1 ? false : true}/>
                                     </div>
                                 )}
                             )}
@@ -375,38 +325,17 @@ function App(){
                 </div>)}
             )}
             <Popup
+                attributeIndices={popupState.attributeIndices}
                 visible={popupState.visible}
                 popupStyle={popupStyle}
                 popupHide={popupHide}
+                format={format}
+                changeFormat={changeFormat}
             />
             </div>
 
             <div className="format-bar">
                 <button className="form-button" onClick={generatePDF} type="button">Generate PDF</button>
-                {format.map( formatObj => {
-                    const formatId = formatObj.formatId
-                    const formatValue = formatObj.formatValue
-                    const formatName = formatObj.formatName
-                    const formatOptions = formatObj.formatOptions
-                    return (
-                        <div className="form-input-object">
-                                                    <select
-                                                        className="form-input"
-                                                        id="form-input"
-                                                        type="text"
-                                                        onChange={(event) => changeFormat(event, formatId)}
-                                                        name={formatId}
-                                                        value={formatValue}
-                                                    > 
-                                                    {formatOptions.map(option => {
-                                                        return (<option value={option}>{option}</option>)
-                                                    })}
-                                                    </select>
-                                                    <p className="form-input-field" htmlFor="form-input">
-                                                        {formatName}
-                                                    </p>
-                        </div>)}
-                )}
             </div>
         </div>
     )
