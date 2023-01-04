@@ -11,23 +11,85 @@ const options = {
 }
 function App(){
     const [format, setFormat] = React.useState(
+        [{
+            formatId: 0,
+            formatValue: 1.0,
+            formatName: "margins",
+            formatOptions: [0.25, 0.5, 0.75, 1.0]            
+        },
         {
-            margins: 1
+            formatId: 1,
+            formatValue: "1em",
+            formatName: "title 1 size",
+            formatOptions: [".6em", ".8em", "1em", "1.2em"]            
+        },
+        {
+            formatId: 2,
+            formatValue: "black",
+            formatName: "title 1 color",
+            formatOptions: ["black", "blue", "red", "yellow"]            
+        },
+        {
+            formatId: 3,
+            formatValue: ".9em",
+            formatName: "title 2 size",
+            formatOptions: [".6em", ".8em", "1em", "1.2em"]            
+        },
+        {
+            formatId: 4,
+            formatValue: "black",
+            formatName: "title 2 color",
+            formatOptions: ["black", "blue", "red", "yellow"]            
+        },
+        {
+            formatId: 5,
+            formatValue: "1.5em",
+            formatName: "heading size",
+            formatOptions: [".6em", ".8em", "1em", "1.2em"]           
+        },
+        {
+            formatId: 6,
+            formatValue: "black",
+            formatName: "heading color",
+            formatOptions: ["black", "blue", "red", "yellow"]            
+        },
+        {
+            formatId: 7,
+            formatValue: "flex",
+            formatName: "section line",
+            formatOptions: ["flex", "none"]            
+        },
+        {
+            formatId: 8,
+            formatValue: "black",
+            formatName: "section line color",
+            formatOptions: ["black", "blue", "red", "yellow"]           
+        },
+        {
+            formatId: 9,
+            formatValue: "flex",
+            formatName: "sub-section line",
+            formatOptions: ["flex", "none"]            
+        },
+        {
+            formatId: 10,
+            formatValue: "black",
+            formatName: "sub-section line color",
+            formatOptions: ["black", "blue", "red", "yellow"]           
         }
+    ]
     )
-    function changeFormat(event){
+    function changeFormat(event, formatIndex){
         const {name, value} =  event.target
-
-        let newValue = value
-        return setFormat(prevFormat => {
-            return (
-                {
-                    ...prevFormat,
-                    [name]: newValue
-                }
-            )
+        let newFormat = format[formatIndex]
+        newFormat["formatValue"] = value
+        return setFormat(prevFormatList => {
+            let newFormatList = prevFormatList.map(i => (i))
+            newFormatList[formatIndex] = newFormat
+            return (newFormatList)
         })
     }
+    console.log(format[1].formatValue)
     let resumeStyle = {
         ["--width"]: "600px",
         width: "var(--width)",
@@ -36,7 +98,20 @@ function App(){
         overflow: "scroll",
         display: "flex",
         ["flex-flow"]: "column",
-        ["padding"]: `calc(${((format.margins / 8.5))} * var(--width))`
+        
+        ["padding"]: `calc(${(format[0].formatValue / 8.5)} * var(--width))`,
+        filter: "drop-shadow(5px 5px 5px var(--drop-shadow-color))",
+        ["--heading-font-size"]: format[5].formatValue,
+        ["--heading-color"]: format[6].formatValue,
+        ["--title-1-font-size"]: format[1].formatValue,
+        ["--title-1-color"]: format[2].formatValue,
+        ["--title-2-font-size"]: format[3].formatValue,
+        ["--title-2-color"]: format[4].formatValue,
+        ["--section-line-display"]: format[7].formatValue,
+        ["--section-line-color"]: format[8].formatValue,
+        ["--subsection-line-display"]: format[9].formatValue,
+        ["--subsection-line-color"]: format[10].formatValue
+        
     }
     /* State object for all resume information */
     const [formData, setFormData] = React.useState(
@@ -282,19 +357,30 @@ function App(){
             
             <div className="format-bar">
                 <button className="form-button" onClick={generatePDF} type="button">Generate PDF</button>
-            
-                <div className="form-input-object">
-                                            <input
-                                                className="form-input"
-                                                type="text"
-                                                onChange={(event) => changeFormat(event)}
-                                                name="margins"
-                                                value={format.margins}
-                                            /> 
-                                            <p className="form-input-field">
-                                                margins
-                                            </p>
-                </div>
+                {format.map( formatObj => {
+                    const formatId = formatObj.formatId
+                    const formatValue = formatObj.formatValue
+                    const formatName = formatObj.formatName
+                    const formatOptions = formatObj.formatOptions
+                    return (
+                        <div className="form-input-object">
+                                                    <select
+                                                        className="form-input"
+                                                        id="form-input"
+                                                        type="text"
+                                                        onChange={(event) => changeFormat(event, formatId)}
+                                                        name={formatId}
+                                                        value={formatValue}
+                                                    > 
+                                                    {formatOptions.map(option => {
+                                                        return (<option value={option}>{option}</option>)
+                                                    })}
+                                                    </select>
+                                                    <p className="form-input-field" htmlFor="form-input">
+                                                        {formatName}
+                                                    </p>
+                        </div>)}
+                )}
             </div>
         </div>
     )
