@@ -92,6 +92,34 @@ h2{
     overflow: scroll;
     filter: drop-shadow(5px 5px 5px var(--drop-shadow-color));
 }*/
+
+/* .view::after{
+    content: "";
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+} */
+.margin{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    /* clip-path: polygon(calc(var(--padding-width) * 1px) 50%, 50% 0%, 100% 50%, 50% 100%); */
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 
+    0% calc(var(--padding-width) * 1px), calc(var(--padding-width) * 1px) calc(var(--padding-width) * 1px), calc(var(--padding-width) * 1px) calc((var(--view-height) - var(--padding-width)) * 1px), 
+    calc((var(--view-width) - var(--padding-width)) * 1px) calc((var(--view-height) - var(--padding-width)) * 1px), calc((var(--view-width) - var(--padding-width)) * 1px) calc(var(--padding-width) * 1px), 
+    0px calc(var(--padding-width) * 1px));
+    background-color: white;
+    opacity: 0;
+
+}
+.view-info{
+    padding: calc(var(--padding-width) * 1px);
+}
 /* Headings (name, section titles) */
 .heading-text{
     font-size: var(--heading-font-size);
@@ -185,7 +213,7 @@ img{
 }
 /* Container for form */
 .control{
-    --width: 600px;
+    --width: auto;
     width: var(--width);
     height: calc(1.2942 * var(--width));
     display: flex;
@@ -311,6 +339,11 @@ img{
     filter: drop-shadow(5px 5px 5px var(--drop-shadow-color));
     font-family: inherit;
 
+}
+#generate-button{
+    width: 20%;
+    height: 8%;
+    justify-self: right;
 }
 .form-button-remove{
 

@@ -26,15 +26,16 @@ function App(){
         })
     }
     let resumeStyle = {
-        ["--width"]: "600px",
-        width: "var(--width)",
-        height: "calc(1.2942 * 600px)",
-        background: "white",
+        ["--width"]: `${format[18].formatValue}px`,
+        ["min-width"]: "var(--width)",
+        height: "calc(1.2942 * var(--width))",
+        ["--view-width"]: format[18].formatValue,
+        ["--view-height"]: 1.2942 * format[18].formatValue,
+        background: format[19].formatValue,
         overflow: "scroll",
         display: "flex",
         ["flex-flow"]: "column",
-        
-        ["padding"]: `calc(${(format[0].formatValue / 8.5)} * var(--width))`,
+        ["--padding-width"]: `${(format[0].formatValue / 8.5) * format[18].formatValue}`,
         filter: "drop-shadow(5px 5px 5px var(--drop-shadow-color))",
         ["--heading-font-size"]: format[5].formatValue,
         ["--heading-color"]: format[6].formatValue,
@@ -237,7 +238,8 @@ function App(){
                         targetClass === "hr-section-item" ? [9, 10] :
                         targetClass === "info-text" ? [11, 12] :
                         targetClass === "point" ? [13, 14, 15] :
-                        targetClass === "section-info" ? [16, 17] : []
+                        targetClass === "section-info" ? [16, 17] :
+                        targetClass === "margin" ? [0, 19] : []
         setPopupState(prevPopup => {
             return ({...prevPopup, attributeIndices: indices, visible: true, xpos: `${event.clientX}px`, ypos: `${event.clientY}px`})
         })
@@ -256,7 +258,10 @@ function App(){
             {/******************** Left: resume view ********************/}
             {/************************************************************/}
             <div ref={ref} style={resumeStyle} className="view">
-            {/* <div ref={ref} className="view"> */}
+                <div className="margin" onMouseOver={(event) => itemPopup(event)}>
+
+                </div>
+            <div ref={ref} className="view-info"> 
                 {/******************** View: Personal Information ********************/}
                 <Heading personalInfo={formData.personalInformation[0]} itemPopup={itemPopup}/> 
                 {/******************** View: Information Sections ********************/}
@@ -277,11 +282,13 @@ function App(){
                             )}
                         </div>)}
                 )}
+                </div>
             </div>
             {/************************************************************/}
             {/******************** Right: input form ********************/}
             {/************************************************************/}
             <div className="control">
+            <button id="generate-button" className="form-button" onClick={generatePDF} type="button">Generate PDF</button>
                 {Object.values(sectionList).map((sectionValue, sectionIndex) => {
                     const sectionName = sectionValue.sectionName
                     const fields = sectionValue.fields
@@ -334,9 +341,9 @@ function App(){
             />
             </div>
 
-            <div className="format-bar">
-                <button className="form-button" onClick={generatePDF} type="button">Generate PDF</button>
-            </div>
+            {/* <div className="format-bar"> */}
+                
+            {/* </div> */}
         </div>
     )
 }

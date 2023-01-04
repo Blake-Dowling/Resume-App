@@ -1,11 +1,11 @@
 import React from "react"
-const colors = ["black", "grey", "deepskyblue", "blue", "red", "yellow"]
+const colors = ["black", "white", "grey", "deepskyblue", "blue", "red", "yellow"]
 const fontSizes = [".2em", ".4em", ".6em", ".8em", "1em", "1.2em", "1.4em", "1.6em"] 
 export default [{
     formatId: 0,
     formatValue: 1.0,
     formatName: "margins",
-    formatOptions: [0.25, 0.5, 0.75, 1.0]            
+    formatOptions: [0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0]            
 },
 {
     formatId: 1,
@@ -107,6 +107,18 @@ export default [{
     formatId: 17,
     formatValue: "black",
     formatName: "section info color",
+    formatOptions: [...colors]          
+},
+{
+    formatId: 18,
+    formatValue: 600,
+    formatName: "width",
+    formatOptions: [600]          
+},
+{
+    formatId: 19,
+    formatValue: "white",
+    formatName: "background",
     formatOptions: [...colors]          
 }
 ]
