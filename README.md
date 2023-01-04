@@ -1,4 +1,10 @@
-Project Plans:
+Features:
+Highly modular React components allow user freedom with flexible formatting. 
+Interactive resume view with element selection popups allows dynamic css attribute styling using React state.
+Enhanced UX with professionally-styled accordions, inputs, and responsive layout.
+
+
+Project Notes:
 Create a two-section layout including the dynamically updated resume and an input form.
 Abstract resume sections into a single component.
 Make the section component dynamic, mapping data from a json file to the resume.
@@ -14,3 +20,6 @@ The current challenge being addressed is implementing a modular 'section' JSX ob
 Implementing dynamic bullet points became a challenge, because I wanted to reuse existing functions. Deep nesting of attributes required dilligent debugging.
 1/4/2023
 Next to add will be more format properties such as margin, background, and font. Templates should be stored as 'formatState.js' elements and selected by the user. I am still unsure if sections and fields to be made customizable. Logos could then be selected. Displaying the form on top of the resume view will is desired, but unnecessary and may be too challenging.
+A challenge was deciding between a free or a guided user experience. More freedom provides the benefit of allowing more modularization of components. With this, the different resume sections can be stored in an array, so that they can be customized and rearranged. Furthermore, the same can be done with the form fields within each section.
+The ability for the user to select elements in order to change their css attributes required the css style attribute for the resume to be stored inside of a React state. The implementation of this feature was done using a function assigned to the mouseOver event, which displays a popup containing a subarray of the style state corresponding to the selected element's attributes. To prevent errors, the style values are provided using a select dropdown, and the selection value corresponds to the respective state property.
+It was challenging to trigger a mouseOver event while the user hovers over the resume's margins. An additional element needed to be created to cover the padding of the resume view, using clip-path. The dimensions of the clip-path resize according to the margin size variable in the React state, and the user can access formatting options such as background color, font, margin size, and the number of columns when they hover over the margins.
