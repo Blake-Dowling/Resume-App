@@ -41,7 +41,8 @@ body{
     /* --point-text-size: .6em; */
     --form-info-text-size: .8em;
     --form-font-color: #a9a9a961;
-    --drop-shadow-color: rgba(0, 0, 0, 0.139);
+    /* --drop-shadow-color: rgba(0, 0, 0, 0.139); */
+    --drop-shadow-color: rgba(255, 255, 255, 0.139);
 }
 h1, h2, p, hr{
     margin: 0px;
@@ -49,7 +50,6 @@ h1, h2, p, hr{
 h2{
     align-self: center;
     color: var(--heading-font-color);
-    filter: drop-shadow();
 }
 
 .hr-section{
@@ -80,7 +80,7 @@ h2{
 
 /* Container for Resume View */
 /* Resume Page Template */
-/*.view{
+/* .view{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -93,7 +93,7 @@ h2{
     padding: var(--template-padding);
     overflow: scroll;
     filter: drop-shadow(5px 5px 5px var(--drop-shadow-color));
-}*/
+} */
 
 /* .view::after{
     content: "";
@@ -235,6 +235,7 @@ img{
     flex-flow: column;
     padding: 2em;
     overflow: scroll;
+    box-shadow: 2px 2px 100px var(--drop-shadow-color);
 }
 
 
@@ -302,7 +303,7 @@ img{
     opacity: 0;
 }
 .form-section:hover{
-    border: solid 1px black;
+    border: solid 1px white;
 }
 .form-object-container{
     position: relative;
@@ -359,9 +360,9 @@ img{
     height: 8%;
     justify-self: right;
 }
-.form-button-remove{
+/* .form-button-remove{
 
-}
+} */
 .form-input:focus + .form-input-field, 
 .form-input:not([value=""]) + .form-input-field{
     font-size: 8px;
