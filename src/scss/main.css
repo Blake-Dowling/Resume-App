@@ -1,0 +1,374 @@
+@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Khula:700);
+@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&family=Rubik&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500&display=swap);
+:root {
+  --template-bgColor: white;
+  --template-padding: 2em;
+  --heading-font-size: 1.5em;
+  --form-info-text-size: .8em;
+  --form-font-color: #a9a9a961;
+  --drop-shadow-color: rgba(0, 0, 0, 0.139);
+}
+
+:root {
+  --template-bgColor: white;
+  --template-padding: 2em;
+  --heading-font-size: 1.5em;
+  --form-info-text-size: .8em;
+  --form-font-color: #a9a9a961;
+  --drop-shadow-color: rgba(0, 0, 0, 0.139);
+}
+
+.view .margin {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  /* clip-path: polygon(calc(var(--padding-width) * 1px) 50%, 50% 0%, 100% 50%, 50% 100%); */
+  -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% calc(var(--padding-width) * 1px), calc(var(--padding-width) * 1px) calc(var(--padding-width) * 1px), calc(var(--padding-width) * 1px) calc((var(--view-height) - var(--padding-width)) * 1px), calc((var(--view-width) - var(--padding-width)) * 1px) calc((var(--view-height) - var(--padding-width)) * 1px), calc((var(--view-width) - var(--padding-width)) * 1px) calc(var(--padding-width) * 1px), 0px calc(var(--padding-width) * 1px));
+          clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% calc(var(--padding-width) * 1px), calc(var(--padding-width) * 1px) calc(var(--padding-width) * 1px), calc(var(--padding-width) * 1px) calc((var(--view-height) - var(--padding-width)) * 1px), calc((var(--view-width) - var(--padding-width)) * 1px) calc((var(--view-height) - var(--padding-width)) * 1px), calc((var(--view-width) - var(--padding-width)) * 1px) calc(var(--padding-width) * 1px), 0px calc(var(--padding-width) * 1px));
+  background-color: white;
+  opacity: 0;
+}
+.view .view-info {
+  /**************************************************/
+  /********************View Formatting********************/
+  /**************************************************/
+  /* Resume Margin */
+  padding: calc(var(--padding-width) * 1px);
+  /* Headings (name, section titles) */
+  /*X Certificate text */
+  /* Objective Text */
+  /* Line break between sections */
+  /* Line break between section items */
+  /* Container Bar for icon-data pairs */
+  /* Bullet points */
+  /**************************************************/
+  /********************Personal Info********************/
+  /**************************************************/
+  /* Personal Info Main Container */
+  /**************************************************/
+  /********************Info Sections********************/
+  /**************************************************/
+  /* Contains all sections (not personal info.) */
+}
+.view .view-info .heading-text {
+  font-size: var(--heading-font-size);
+  color: var(--heading-color);
+}
+.view .view-info .title-1 {
+  font-size: var(--title-1-font-size);
+  color: var(--title-1-color);
+}
+.view .view-info .title-2 {
+  font-size: var(--title-2-font-size);
+  color: var(--title-2-color);
+}
+.view .view-info .hr-section {
+  display: var(--section-line-display);
+  border: none;
+  background-color: var(--section-line-color);
+  width: auto;
+  height: 2px;
+  /* box-shadow: 2.5px 2.5px 5px rgba(0, 0, 0, 0.185); */
+}
+.view .view-info .hr-section-item {
+  display: var(--subsection-line-display);
+  border: none;
+  border-top: 0.5px dashed var(--subsection-line-color);
+  background-color: rgba(255, 255, 255, 0);
+  width: 100%;
+  height: 1px;
+}
+.view .view-info .header--contact, .view .view-info .date-location {
+  display: flex;
+  overflow-wrap: normal;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* Template for each contact method element (photo-text pairs) */
+}
+.view .view-info .header--contact .header--contact--object, .view .view-info .date-location .header--contact--object {
+  display: flex;
+  align-items: center;
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
+  margin-left: 0.4em;
+  margin-right: 0.4em;
+  /*X Contact info text (text in photo-text pairs)*/
+  /* Popup data title */
+}
+.view .view-info .header--contact .header--contact--object .info-text, .view .view-info .date-location .header--contact--object .info-text {
+  font-size: var(--info-text-size);
+  color: var(--info-text-color);
+  margin-left: 0.8em;
+}
+.view .view-info .header--contact .header--contact--object .section-info, .view .view-info .date-location .header--contact--object .section-info {
+  font-size: var(--section-info-size);
+  color: var(--section-info-color);
+}
+.view .view-info .date-location {
+  justify-content: left;
+}
+.view .view-info .point {
+  font-size: var(--point-text-size);
+  color: var(--point-text-color);
+}
+.view .view-info .point::marker {
+  font-size: var(--point-style);
+}
+.view .view-info .section-item-container {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  overflow-wrap: break-word;
+}
+.view .view-info .section--container {
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  /* Contains one info section */
+}
+.view .view-info .section--container .section--block {
+  /* min-width: calc(100% / var(--columns));  */
+  padding: 10px;
+}
+
+/* Container for form */
+.control {
+  --width: auto;
+  width: var(--width);
+  height: calc(1.2942 * var(--width));
+  display: flex;
+  flex-flow: column;
+  padding: 2em;
+  overflow: scroll;
+  box-shadow: 2px 2px 100px var(--drop-shadow-color);
+  /* Button to add or remove data entries */
+  /* Separate data category of form containing form-section-title and form-data*/
+}
+.control .form-button, .control .form-button-remove {
+  margin: 0.4em;
+  padding: 0.8em;
+  background-color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 3px;
+  filter: drop-shadow(5px 5px 5px var(--drop-shadow-color));
+  font-family: inherit;
+}
+.control .form-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /* Clickable title area of each form section */
+  /* Outer container for all user data in a section */
+  /* Form section accordion hidden */
+}
+.control .form-section:hover {
+  border: solid 1px black;
+}
+.control .form-section .form-section-title {
+  position: relative;
+  display: flex;
+  align-items: center;
+  /* Button to hide or show form section */
+  /* Buttons for moving form entries */
+  /* Text heading for each form section */
+}
+.control .form-section .form-section-title .form-data-button {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.control .form-section .form-section-title .up-button, .control .form-section .form-section-title .down-button {
+  position: relative;
+  padding: 5px;
+  margin: 0.4em;
+  background: rgba(255, 255, 255, 0);
+  border: none;
+}
+.control .form-section .form-section-title .down-button:after {
+  position: relative;
+  top: -5px;
+  display: block;
+  content: "";
+  width: 1em;
+  height: 1em;
+  border-left: solid 2px var(--form-font-color);
+  border-bottom: solid 2px var(--form-font-color);
+  transform: rotate(-45deg);
+}
+.control .form-section .form-section-title .up-button:after {
+  position: relative;
+  top: 5px;
+  display: block;
+  content: "";
+  width: 1em;
+  height: 1em;
+  border-left: solid 2px var(--form-font-color);
+  border-bottom: solid 2px var(--form-font-color);
+  transform: rotate(135deg);
+}
+.control .form-section .form-section-title .form-section-heading {
+  margin-right: auto;
+}
+.control .form-section .form-data {
+  display: block;
+  max-height: 500px;
+  transition-duration: 0.8s;
+  transition-property: opacity, max-height, transform;
+  /* Outer div containing one data entry object */
+}
+.control .form-section .form-data .form-object-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /* Inner div containing one data entry object */
+}
+.control .form-section .form-data .form-object-container:hover {
+  background: rgba(255, 255, 255, 0.107);
+}
+.control .form-section .form-data .form-object-container .form-input-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /* One data title-input pair */
+  /* Inputs for bullet points */
+  /* Button for removing bullet points */
+}
+.control .form-section .form-data .form-object-container .form-input-container .form-input-object {
+  width: 1fr;
+  position: relative;
+  display: flex;
+  font-size: var(--form-info-text-size);
+  margin: 0.5em;
+  margin-left: 0.2em;
+  margin-right: 0.2em;
+  /*X Input box in data form */
+  /* Animation when input not empty */
+  /* Title of input in data form */
+}
+.control .form-section .form-data .form-object-container .form-input-container .form-input-object .form-input {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  border-bottom: 1px solid var(--form-font-color);
+  padding-left: 0.4em;
+  padding-right: 0.4em;
+  margin-left: 0.4em;
+  margin-right: 0.4em;
+  z-index: 1;
+}
+.control .form-section .form-data .form-object-container .form-input-container .form-input-object .form-input:focus + .form-input-field,
+.control .form-section .form-data .form-object-container .form-input-container .form-input-object .form-input:not([value=""]) + .form-input-field {
+  font-size: 8px;
+  top: -10px;
+}
+.control .form-section .form-data .form-object-container .form-input-container .form-input-object .form-input-field {
+  color: var(--form-font-color);
+  position: absolute;
+  top: 0px;
+  margin-left: 0.4em;
+  transition-property: top, font-size;
+  transition-duration: 0.2s;
+}
+.control .form-section .form-data .form-object-container .form-input-container .point-input {
+  display: flex;
+  align-items: center;
+}
+.control .form-section .form-data .form-object-container .form-input-container .remove-point {
+  border: none;
+  background: rgba(255, 255, 255, 0);
+}
+.control .form-section .form-data .form-object-container .form-input-container .remove-point:after {
+  display: block;
+  content: "×";
+  color: var(--form-font-color);
+}
+.control .form-section .form-data[hidden] {
+  transition-duration: 0.8s;
+  transition-property: opacity, max-height, transform;
+  transition-delay: 0;
+  max-height: 0px;
+  transform: scale(0);
+  opacity: 0;
+}
+
+body {
+  font-family: Khula;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: left;
+  background: white;
+  background-attachment: fixed;
+  color: black;
+}
+
+*:focus {
+  outline: none;
+}
+
+::-moz-placeholder {
+  color: #a9a9a9;
+}
+
+::placeholder {
+  color: #a9a9a9;
+}
+
+/*X Outermost div containing entire page */
+.page {
+  display: flex;
+}
+
+/* Images (icons) */
+img {
+  mix-blend-mode: multiply;
+}
+
+.logo {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+#phone-logo {
+  width: 0.8em;
+  /* -webkit-mask-image: url("./Phone-Logo2.png") center/contain;
+  -webkit-mask-size: 30px 30px;
+  mask-image: url("./Phone-Logo2.png") center/contain;
+  mask-size: 30px 30px;  */
+}
+
+#gmail-logo {
+  width: 1em;
+}
+
+#website-logo {
+  width: 1em;
+}
+
+#github-logo {
+  width: 1em;
+}
+
+#linkedin-logo {
+  width: 1em;
+}
+
+#location-logo {
+  -o-object-fit: contain;
+     object-fit: contain;
+  width: 1em;
+}
+
+#calendar-logo {
+  -o-object-fit: contain;
+     object-fit: contain;
+  width: 1em;
+}
+
+/*X Button for generating resume PDF */
+#generate-button {
+  width: 20%;
+  height: 8%;
+  justify-self: right;
+}/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,67 @@
+@import url(https://fonts.googleapis.com/css?family=Khula:700);
+@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&family=Rubik&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500&display=swap);
+@import "variables";
+@import "view";
+@import "control";
+body{
+    font-family: Khula;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: left;
+    background: white;
+    background-attachment: fixed;
+    color: black;
+
+}
+
+*:focus{
+    outline: none;
+}
+::placeholder{
+    color: #a9a9a9;
+}
+/*X Outermost div containing entire page */
+.page{
+    display: flex;
+}
+/* Images (icons) */
+img{
+    mix-blend-mode: multiply; //Allows background to show through all images
+}
+.logo{
+    object-fit: contain; 
+}
+#phone-logo{
+    width: .8em;
+    /* -webkit-mask-image: url("./Phone-Logo2.png") center/contain;
+    -webkit-mask-size: 30px 30px;
+    mask-image: url("./Phone-Logo2.png") center/contain;
+    mask-size: 30px 30px;  */
+}
+#gmail-logo{
+    width: 1em;
+}
+#website-logo{
+    width: 1em;
+}
+#github-logo{
+    width: 1.0em;
+}
+#linkedin-logo{
+    width: 1em;
+}
+#location-logo{
+    object-fit: contain;
+    width: 1em;
+}
+#calendar-logo{
+    object-fit: contain;
+    width: 1em;
+}
+/*X Button for generating resume PDF */
+#generate-button{
+    width: 20%;
+    height: 8%;
+    justify-self: right;
+}
