@@ -1,3 +1,17 @@
+@mixin formInput{
+    /* Input box in data form */
+    .form-input{
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0);
+        border: none;
+        border-bottom: 1px solid var(--form-font-color);
+        padding-left: .4em; 
+        padding-right: .4em;
+        margin-left: .4em;
+        margin-right: .4em;
+        z-index: 1;
+    }
+};
 /* Container for form */
 .control{
     --width: auto;
@@ -99,18 +113,8 @@
                             margin: .5em;
                             margin-left: .2em;
                             margin-right: .2em;
-                            /*X Input box in data form */
-                            .form-input{
-                                width: 100%;
-                                background-color: rgba(255, 255, 255, 0);
-                                border: none;
-                                border-bottom: 1px solid var(--form-font-color);
-                                padding-left: .4em; 
-                                padding-right: .4em;
-                                margin-left: .4em;
-                                margin-right: .4em;
-                                z-index: 1;
-                            }
+                            /* Input box in data form */
+                            @include formInput;
                             /* Animation when input not empty */
                             .form-input:focus + .form-input-field, 
                             .form-input:not([value=""]) + .form-input-field{
@@ -127,10 +131,12 @@
                                 transition-duration: .2s;
                             }
                         }
+                        }
                         /* Inputs for bullet points */
                         .point-input{
                             display: flex;
                             align-items: center;
+                            @include formInput;
                         }
                         /* Button for removing bullet points */
                         .remove-point{
@@ -155,4 +161,4 @@
                 opacity: 0;
             }
         }
-    }
+    

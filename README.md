@@ -5,6 +5,7 @@ Enhanced UX with professionally-styled accordions, inputs, and responsive layout
 
 
 Project Notes:
+I wanted to provide user-accessibility to css styling for resumes.
 Create a two-section layout including the dynamically updated resume and an input form.
 Abstract resume sections into a single component.
 Make the section component dynamic, mapping data from a json file to the resume.
@@ -24,3 +25,4 @@ A challenge was deciding between a free or a guided user experience. More freedo
 The ability for the user to select elements in order to change their css attributes required the css style attribute for the resume to be stored inside of a React state. The implementation of this feature was done using a function assigned to the mouseOver event, which displays a popup containing a subarray of the style state corresponding to the selected element's attributes. To prevent errors, the style values are provided using a select dropdown, and the selection value corresponds to the respective state property.
 It was challenging to trigger a mouseOver event while the user hovers over the resume's margins. An additional element needed to be created to cover the padding of the resume view, using clip-path. The dimensions of the clip-path resize according to the margin size variable in the React state, and the user can access formatting options such as background color, font, margin size, and the number of columns when they hover over the margins.
 The next goal is to create a .js file that maintains the formData's state, in case the browser refreshed. Also, templates need to be made for the user to select from, whereby more guidance is provided while still allowing freedom to edit any element.
+2/19/23

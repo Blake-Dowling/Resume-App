@@ -1,7 +1,8 @@
 import React from "react"
 import ReactDOM from "react-dom"
 import {jsPDF} from "jspdf"
-import "./style.css"
+//import "./style.css"
+import "./scss/main.css"
 import Heading from "./components/Heading.js"
 import InfoItem from "./components/InfoItem.js"
 import FormSection from "./components/FormSection.js"
@@ -304,7 +305,7 @@ function App(){
                     return(
                     <div className="form-section">
                         <div className="form-section-title">
-                        <a className="form-data-button" onClick={() => (changeVisibility(sectionIndex))}></a>
+                            <a className="form-data-button" onClick={() => (changeVisibility(sectionIndex))}></a>
                             {sectionName !== "personalInformation" && 
                             <div>
                                 <button className="up-button" onClick={() => ordersectionList(sectionIndex, "up")}></button>

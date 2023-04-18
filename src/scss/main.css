@@ -146,6 +146,7 @@
   box-shadow: 2px 2px 100px var(--drop-shadow-color);
   /* Button to add or remove data entries */
   /* Separate data category of form containing form-section-title and form-data*/
+  /* Form section accordion hidden */
 }
 .control .form-button, .control .form-button-remove {
   margin: 0.4em;
@@ -162,7 +163,6 @@
   flex-direction: column;
   /* Clickable title area of each form section */
   /* Outer container for all user data in a section */
-  /* Form section accordion hidden */
 }
 .control .form-section:hover {
   border: solid 1px black;
@@ -224,6 +224,8 @@
   display: flex;
   flex-direction: column;
   /* Inner div containing one data entry object */
+  /* Inputs for bullet points */
+  /* Button for removing bullet points */
 }
 .control .form-section .form-data .form-object-container:hover {
   background: rgba(255, 255, 255, 0.107);
@@ -232,8 +234,6 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   /* One data title-input pair */
-  /* Inputs for bullet points */
-  /* Button for removing bullet points */
 }
 .control .form-section .form-data .form-object-container .form-input-container .form-input-object {
   width: 1fr;
@@ -243,7 +243,8 @@
   margin: 0.5em;
   margin-left: 0.2em;
   margin-right: 0.2em;
-  /*X Input box in data form */
+  /* Input box in data form */
+  /* Input box in data form */
   /* Animation when input not empty */
   /* Title of input in data form */
 }
@@ -271,20 +272,32 @@
   transition-property: top, font-size;
   transition-duration: 0.2s;
 }
-.control .form-section .form-data .form-object-container .form-input-container .point-input {
+.control .form-section .form-data .form-object-container .point-input {
   display: flex;
   align-items: center;
+  /* Input box in data form */
 }
-.control .form-section .form-data .form-object-container .form-input-container .remove-point {
+.control .form-section .form-data .form-object-container .point-input .form-input {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  border-bottom: 1px solid var(--form-font-color);
+  padding-left: 0.4em;
+  padding-right: 0.4em;
+  margin-left: 0.4em;
+  margin-right: 0.4em;
+  z-index: 1;
+}
+.control .form-section .form-data .form-object-container .remove-point {
   border: none;
   background: rgba(255, 255, 255, 0);
 }
-.control .form-section .form-data .form-object-container .form-input-container .remove-point:after {
+.control .form-section .form-data .form-object-container .remove-point:after {
   display: block;
   content: "×";
   color: var(--form-font-color);
 }
-.control .form-section .form-data[hidden] {
+.control .form-data[hidden] {
   transition-duration: 0.8s;
   transition-property: opacity, max-height, transform;
   transition-delay: 0;

@@ -1,6 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Khula:700);
 @import url(https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&family=Rubik&display=swap);
 @import url(https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500&display=swap);
+/* X */
 body{
     font-family: Khula;
     /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -33,6 +34,7 @@ body{
         background-position: 0% 0%;
     }
 } */
+/* X */
 :root{
     --template-bgColor: white;
     --template-padding: 2em;
@@ -42,16 +44,17 @@ body{
     --form-info-text-size: .8em;
     --form-font-color: #a9a9a961;
     /* --drop-shadow-color: rgba(0, 0, 0, 0.139); */
-    --drop-shadow-color: rgba(255, 255, 255, 0.139);
+    --drop-shadow-color: rgba(0, 0, 0, 0.139);
 }
 h1, h2, p, hr{
     margin: 0px;
 }
+/*X Form section titles */
 h2{
     align-self: center;
     color: var(--heading-font-color);
 }
-
+/*X Line break between sections */
 .hr-section{
     display: var(--section-line-display);
     border: none;
@@ -60,6 +63,7 @@ h2{
     height: 2px;
     /* box-shadow: 2.5px 2.5px 5px rgba(0, 0, 0, 0.185); */
 }
+/*X Line break between section items */
 .hr-section-item{
     display: var(--subsection-line-display);
     border: none;
@@ -68,12 +72,15 @@ h2{
     width: 100%;
     height: 1px;
 }
+/* X */
 *:focus{
     outline: none;
 }
+/* X */
 ::placeholder{
     color: #a9a9a9;
 }
+/*X Outermost div containing entire page */
 .page{
     display: flex;
 }
@@ -104,6 +111,7 @@ h2{
     left: 0px;
     top: 0px;
 } */
+/*X Resume Margin */
 .margin{
     position: absolute;
     top: 0px;
@@ -119,52 +127,59 @@ h2{
     opacity: 0;
 
 }
+/*X Div holding all resume view info, inside of margin */
 .view-info{
     padding: calc(var(--padding-width) * 1px);
 }
-/* Headings (name, section titles) */
+/*X Headings (name, section titles) */
 .heading-text{
     font-size: var(--heading-font-size);
     color: var(--heading-color);
 }
+/*X Certificate text */
 .title-1{
     font-size: var(--title-1-font-size);
     color: var(--title-1-color);
 }
+/*X Objective text */
 .title-2{
     font-size: var(--title-2-font-size);
     color: var(--title-2-color);
 }
-/* Section Container */
+/*X Contains all sections (not personal info.) */
 .section--container{
     display: grid;
     grid-template-columns: repeat(var(--columns), 1fr);
 }
+/*X Contains one info section */
 .section--block{
     /* min-width: calc(100% / var(--columns));  */
     padding: 10px;
 }
+/*X Personal Info Main Container */
 .section-item-container{
     display: flex;
     flex-direction: column;
     align-items: left;
     overflow-wrap: break-word;
 }
-/* Container Bar for contact info */
+/*X Container Bar for contact info */
 .header--contact, .date-location{
     display: flex;
     overflow-wrap: normal;
     flex-wrap: wrap;
     justify-content: center;
 }
+/* X */
 .date-location{
     justify-content: left;
 }
+/*X Popup data title */
 .section-info{
     font-size: var(--section-info-size);
     color: var(--section-info-color);
 }
-/* Template for each contact method element (photo-text pairs) */
+/*X Template for each contact method element (photo-text pairs) */
 .header--contact--object{
     display: flex;
     align-items: center;
@@ -173,7 +188,7 @@ h2{
     margin-left: .4em;
     margin-right: .4em;
 }
-/* Contact info text (text in photo-text pairs)*/
+/*X Contact info text (text in photo-text pairs)*/
 .info-text{
     font-size: var(--info-text-size);
     color: var(--info-text-color);
@@ -182,23 +197,25 @@ h2{
 ul{
     margin: 0px;
 }
-/* Bullet points */
+/*X Bullet points */
 .point{
     font-size: var(--point-text-size);
     color: var(--point-text-color);
 }
+/* X */
 .point::marker{
     font-size: var(--point-style);
 }
 
-/* Images (icons) */
+/*X Images (icons) */
 img{
     mix-blend-mode: multiply;
 }
+/* X */
 .logo{
-    object-fit: contain;
-    
+    object-fit: contain; 
 }
+/* X */
 #phone-logo{
     width: .8em;
     /* -webkit-mask-image: url("./Phone-Logo2.png") center/contain;
@@ -206,27 +223,33 @@ img{
     mask-image: url("./Phone-Logo2.png") center/contain;
     mask-size: 30px 30px;  */
 }
+/* X */
 #gmail-logo{
     width: 1em;
 }
+/* X */
 #website-logo{
     width: 1em;
 }
+/* X */
 #github-logo{
     width: 1.0em;
 }
+/* X */
 #linkedin-logo{
     width: 1em;
 }
+/* X */
 #location-logo{
     object-fit: contain;
     width: 1em;
 }
+/* X */
 #calendar-logo{
     object-fit: contain;
     width: 1em;
 }
-/* Container for form */
+/*X Container for form */
 .control{
     --width: auto;
     width: var(--width);
@@ -237,12 +260,11 @@ img{
     overflow: scroll;
     box-shadow: 2px 2px 100px var(--drop-shadow-color);
 }
-
-
-
+/*X Text heading for each form section */
 .form-section-heading{
     margin-right: auto;
 }
+/*X Buttons for moving form entries */
 .up-button, .down-button{
     position: relative;
     padding: 5px;
@@ -250,6 +272,7 @@ img{
     background: rgba(255, 255, 255, 0);
     border: none;
 }
+/* X */
 .down-button:after{
     position: relative;
     top: -5px;
@@ -261,6 +284,7 @@ img{
     border-bottom: solid 2px var(--form-font-color);
     transform: rotate(-45deg)
 }
+/* X */
 .up-button:after{
     position: relative;
     top: 5px;
@@ -272,28 +296,36 @@ img{
     border-bottom: solid 2px var(--form-font-color);
     transform: rotate(135deg)
 }
+/*X Separate data category of form */
 .form-section{
     position: relative;
     display: flex;
     flex-direction: column;
 }
+/* X */
+.form-section:hover{
+    border: solid 1px white;
+}
+/*X Clickable title area of each form section */
 .form-section-title{
     position: relative;
     display: flex;
     align-items: center;
 }
+/*X Button to hide or show form section */
 .form-data-button{
     position: absolute;
     width: 100%;
     height: 100%;
 }
+/*X Outer container for all user data in control */
 .form-data{
     display: block;
     max-height: 500px;
     transition-duration: .8s;
     transition-property: opacity, max-height, transform;
 }
-
+/* X */
 .form-data[hidden]{
     transition-duration: .8s;
     transition-property: opacity, max-height, transform;
@@ -302,21 +334,22 @@ img{
     transform: scale(0);
     opacity: 0;
 }
-.form-section:hover{
-    border: solid 1px white;
-}
+/*X Div inside of control, contains form section objects*/
 .form-object-container{
     position: relative;
     display: flex;
     flex-direction: column;
 }
+/* X */
 .form-object-container:hover{
     background: rgba(255, 255, 255, 0.107);
 }
+/*X An entry of form data*/
 .form-input-container{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
 } 
+/*X One data title-input pair */
 .form-input-object{
     width: 1fr;
     position: relative;
@@ -326,6 +359,7 @@ img{
     margin-left: .2em;
     margin-right: .2em;
 }
+/*X Input box in data form */
 .form-input{
     width: 100%;
     background-color: rgba(255, 255, 255, 0);
@@ -337,6 +371,7 @@ img{
     margin-right: .4em;
     z-index: 1;
 }
+/*X Title of input in data form */
 .form-input-field{
     color: var(--form-font-color);
     position: absolute;
@@ -345,6 +380,7 @@ img{
     transition-property: top, font-size;
     transition-duration: .2s;
 }
+/*X Button to add or remove data entries */
 .form-button, .form-button-remove{
     margin: .4em;
     padding: .8em;
@@ -353,8 +389,8 @@ img{
     border-radius: 3px;
     filter: drop-shadow(5px 5px 5px var(--drop-shadow-color));
     font-family: inherit;
-
 }
+/*X Button for generating resume PDF */
 #generate-button{
     width: 20%;
     height: 8%;
@@ -363,20 +399,24 @@ img{
 /* .form-button-remove{
 
 } */
+/*X Animation when input not empty */
 .form-input:focus + .form-input-field, 
 .form-input:not([value=""]) + .form-input-field{
     font-size: 8px;
     top: -10px;
 
 }
+/*X Inputs for bullet points */
 .point-input{
     display: flex;
     align-items: center;
 }
+/*X Button for removing bullet points */
 .remove-point{
     border: none;
     background: rgba(255, 255, 255, 0);
 }
+/* X */
 .remove-point:after{
     display: block;
     content: "\00d7";
