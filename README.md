@@ -1,3 +1,15 @@
+# React Resume Generator
+
+## Allows high quality resume styling with customizable templates.
+
+This project is a front-end web application that allows users to generate a PDF resume. It allows the user to:
+
+* Select a pre-styled resume template.
+* Enter thier resume information in a simple, organized manner.
+* View a live rendering of the current resume generation.
+* Click on the resume generation in order to select custom styling options for each component.
+* Save the generated resume as a PDF file.
+
 Features:
 Highly modular React components allow user freedom with flexible formatting. 
 Interactive resume view with element selection popups allows dynamic css attribute styling using React state.
