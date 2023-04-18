@@ -10,6 +10,9 @@ This project is a front-end web application that allows users to generate a PDF 
 * Click on the resume generation in order to select custom styling options for each component.
 * Save the generated resume as a PDF file.
 
+https://user-images.githubusercontent.com/121590227/232922542-c81d1abc-740c-4666-b3c0-d050bdfeb55d.mov
+
+
 Features:
 Highly modular React components allow user freedom with flexible formatting. 
 Interactive resume view with element selection popups allows dynamic css attribute styling using React state.
