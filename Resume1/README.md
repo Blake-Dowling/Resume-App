@@ -25,7 +25,8 @@ How to use this application:
 
 
 
-Project Notes:
+What I Learned:
+
 I wanted to provide user-accessibility to css styling for resumes.
 Create a two-section layout including the dynamically updated resume and an input form.
 Abstract resume sections into a single component.
