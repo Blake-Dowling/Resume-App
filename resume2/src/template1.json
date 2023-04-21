@@ -1,0 +1,10 @@
+[
+    {
+        "text": "abc",
+        "format": [
+            {"bold": true},
+            {},
+            {"font": "monospace"}
+        ]
+    }
+]

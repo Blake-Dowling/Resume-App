@@ -1,12 +1,21 @@
-import React from 'react'
+import React, { useState , useEffect} from 'react'
+import TemplateDisplay from './TemplateDisplay'
 import TextEditor from './TextEditor'
 
+import template1 from "./template1.json"
+
 export default function App() {
-  return (
+  const [template, setTemplate] = useState(template1)
+  function changeTemplate(newTemplate){
+    return setTemplate((oldTemplate) => {
+      return (newTemplate)
+    })
+  }
+  return(
     <div>
         App
-        <TextEditor/>
+        <TemplateDisplay changeTemplate={changeTemplate}/>
+        <TextEditor template={template}/>
     </div>
-    
   )
 }
