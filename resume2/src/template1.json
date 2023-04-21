@@ -2,9 +2,9 @@
     {
         "text": "abc",
         "format": [
-            {"bold": true},
-            {},
-            {"font": "monospace"}
+            {"header": 2, "bold": true},
+            {"header": 2},
+            {"header": 2, "font": "monospace"}
         ]
     }
 ]

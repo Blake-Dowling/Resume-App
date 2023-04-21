@@ -24,20 +24,38 @@ export default function TextEditor(props) {
     //retrieving and updating text and respective format
     //Initialize template state
     //Todo: Look into the need for copying the old quill object
-    //Updates quill text area when template changes
+    //Updates format for each character in quill text area when template changes
     useEffect(() => {
-      const newFormat = props.template[0].format
+      const newFormat = props.template[0].format //new list of format objects for
+      // each character in quill text
       if (quill !== undefined){
         const text = quill.getText() // Only used for range of format
-        for (let i=0; i < Math.min(text.length, newFormat.length); i++){
-          const newKey = Object.keys(newFormat[i])[0]
-          const newValue = Object.values(newFormat[i])[0]
-          quill.formatText(i, 1, newKey, newValue)
+        for (let c=0; c < Math.min(text.length, newFormat.length); c++){ //For each
+          //Character in quill text
+          quill.removeFormat(c, 1) //Remove the former format(s) at current character
+          
+          for (let attribute=0; attribute<Object.keys(newFormat[c]).length; attribute++){ //For each
+            // attribute in format object of current character
+            const newKey = Object.keys(newFormat[c])[attribute] //key of current format object
+            const newValue = Object.values(newFormat[c])[attribute] //value of current format object
+            console.log(newKey)
+            quill.formatText(c, 1, newKey, newValue) //Add the new format to current character
+          }
         }
       }
 
     }, props.template)
     
+
+    function printFormat(){
+      if(quill !== undefined){
+        for(let i = 0; i < quill.getText().length; i ++){
+          console.log(quill.getFormat(i))
+        }
+      }
+    }
+
+
     function getPageFormat(){
       const text = quill.getText()
       for (let i=0; i < text.length; i++){
@@ -60,7 +78,7 @@ export default function TextEditor(props) {
     //Container element for text editor
     <div className="container" ref={wrapperRef}>
       TextEditor
-      <button onClick={getPageFormat}>Save Text</button>
+      <button onClick={printFormat}>Save Text</button>
     </div>
   )
 }
