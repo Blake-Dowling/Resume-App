@@ -26,8 +26,14 @@ export default function Popup(props){
                     const formatName = formatObj.formatName
                     const formatOptions = formatObj.formatOptions
                     return (
+                        // Container for popup
                         <div className="form-input-object">
                                                 <div className="form-input-object">
+                                                    {/* Attribute name */}
+                                                    <p className="form-input-field" htmlFor="form-input">
+                                                        {formatName}
+                                                    </p>
+                                                    {/* Dropdown for attribute value options */}
                                                     <select
                                                         className="form-input"
                                                         id="form-input"
@@ -40,9 +46,7 @@ export default function Popup(props){
                                                         return (<option value={option}>{option}</option>)
                                                     })}
                                                     </select>
-                                                    <p className="form-input-field" htmlFor="form-input">
-                                                        {formatName}
-                                                    </p>
+                                                    
                                                 </div>
                         </div>)}
                 )}

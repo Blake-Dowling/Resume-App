@@ -4,6 +4,7 @@
 @import "variables";
 @import "view";
 @import "control";
+@import "slider";
 body{
     font-family: Khula;
     -webkit-font-smoothing: antialiased;
@@ -24,6 +25,12 @@ body{
 /*X Outermost div containing entire page */
 .page{
     display: flex;
+    flex-direction: column;
+}
+// Contains resume view, input form, and popup
+.page-body{
+    display: flex;
+    flex-direction: row;
 }
 /* Images (icons) */
 img{

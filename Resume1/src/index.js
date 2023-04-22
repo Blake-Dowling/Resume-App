@@ -9,6 +9,7 @@ import Popup from "./components/Popup.js"
 import formatState from "./formatState.js"
 import InputForm from "./Input/InputForm"
 import ResumeView from "./ResumeView/ResumeView.js"
+import Slider from "./components/Slider"
 
 const options = {
 
@@ -102,26 +103,29 @@ function App(){
 
     return(
         <div className="page">
-            <ResumeView
-                format={format}
-                itemPopup={itemPopup}
-                formData={formData}
-                sectionList={sectionList}
-            />
-            <InputForm
-                sectionList={sectionList}
-                setSectionList={setSectionList}
-                formData={formData}
-                setFormData={setFormData}
-            />
-            <Popup
-                popupState={popupState}
-                attributeIndices={popupState.attributeIndices}
-                visible={popupState.visible}
-                popupHide={popupHide}
-                format={format}
-                changeFormat={changeFormat}
-            />
+            <Slider/>
+            <div className="page-body">
+                <ResumeView
+                    format={format}
+                    itemPopup={itemPopup}
+                    formData={formData}
+                    sectionList={sectionList}
+                />
+                <InputForm
+                    sectionList={sectionList}
+                    setSectionList={setSectionList}
+                    formData={formData}
+                    setFormData={setFormData}
+                />
+                <Popup
+                    popupState={popupState}
+                    attributeIndices={popupState.attributeIndices}
+                    visible={popupState.visible}
+                    popupHide={popupHide}
+                    format={format}
+                    changeFormat={changeFormat}
+                />
+            </div>
         </div>
     )
 }
