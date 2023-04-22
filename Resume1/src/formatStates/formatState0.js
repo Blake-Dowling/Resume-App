@@ -1,10 +1,10 @@
 import React from "react"
 const colors = ["black", "white", "lightgrey", "deepskyblue", "gold", "grey", "blue", "red", "yellow"]
-const fontSizes = [".2em", ".4em", ".6em", ".8em", "1em", "1.2em", "1.4em", "1.6em", "1.8em", "2em", "2.2em", "2.4em", "2.6em", "2.8em", "3em"] 
+const fontSizes = [".2em", ".3em", ".4em", ".5em", ".6em", ".7em", ".8em", ".9em", "1em", "1.2em", "1.4em", "1.6em", "1.8em", "2em", "2.2em", "2.4em", "2.6em", "2.8em", "3em"] 
 const fonts = ["Times New Roman", "Roboto", "Khula", "Rubik", "Cormorant Garamond", "Arial", "Cambria", "Calibri", "Helvetica", "Courier New", "Geneva", "Georgia", "Palatino", "Lucida Grande", "Trebuchet MS"]
 export default [{
     formatId: 0,
-    formatValue: 1.0,
+    formatValue: 0.5,
     formatName: "margins",
     formatOptions: [0.1, 0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0]            
 },
@@ -22,7 +22,7 @@ export default [{
 },
 {
     formatId: 3,
-    formatValue: ".9em",
+    formatValue: ".7em",
     formatName: "title 2 size",
     formatOptions: [...fontSizes]            
 },
@@ -34,7 +34,7 @@ export default [{
 },
 {
     formatId: 5,
-    formatValue: "1.5em",
+    formatValue: "1.2em",
     formatName: "heading size",
     formatOptions: [...fontSizes]           
 },

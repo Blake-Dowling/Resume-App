@@ -26,7 +26,11 @@
             margin: var(--text-margin);
         }
         hr {
-            margin: var(--line-margin);
+            margin-top: var(--line-margin);
+            margin-bottom: var(--line-margin);
+        }
+        ul {
+            margin: 0.2em;
         }
         /* Headings (name, section titles) */
         .heading-text{

@@ -1,4 +1,3 @@
-import React from "react"
 const colors = ["black", "white", "lightgrey", "deepskyblue", "gold", "grey", "blue", "red", "yellow"]
 const fontSizes = [".2em", ".4em", ".6em", ".8em", "1em", "1.2em", "1.4em", "1.6em"] 
 const fonts = ["Times New Roman", "Roboto", "Khula", "Rubik", "Cormorant Garamond", "Arial", "Cambria", "Calibri", "Helvetica", "Courier New", "Geneva", "Georgia", "Palatino", "Lucida Grande", "Trebuchet MS"]
@@ -22,7 +21,7 @@ export default [{
 },
 {
     formatId: 3,
-    formatValue: ".9em",
+    formatValue: ".6em",
     formatName: "title 2 size",
     formatOptions: [...fontSizes]            
 },

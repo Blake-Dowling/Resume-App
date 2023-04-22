@@ -7,6 +7,7 @@ import "./scss/main.css"
 
 import Popup from "./components/Popup.js"
 import formatState0 from "./formatStates/formatState0.js"
+import formState0 from "./formatStates/formState0.js"
 import InputForm from "./Input/InputForm"
 import ResumeView from "./ResumeView/ResumeView.js"
 import Slider from "./components/Slider"
@@ -43,25 +44,8 @@ function App(){
     /* State object for all resume information */
     // Gets updated in InputForm and shown in ResumeView and InputForm
     const [formData, setFormData] = React.useState(
-        {
-            /* fields for personal information */
-            personalInformation: [
-                {
-                    index: 0,
-                    name: "",
-                    objective: "",
-                    phone: "",
-                    email: "",
-                    website: "",
-                    github: "",
-                    linkedin: ""
-                }
-            ],
-            /* fields for section information */
-            educationList: [],
-            experienceList: [],
-            projectList: []
-    })
+         formState0 
+    )
     // ****************************** Sections ******************************
     // List of fields for each section. E.g. 'education' contains ['certificate', 'institution', ...]
     const personalInfoFields = ["name", "objective", "phone", "email", "website", "github", "linkedin"]
@@ -82,17 +66,19 @@ function App(){
     // popup appear under cursor when a resume feature is hovered and 
     // configures popup attributes accordingly
     function itemPopup(event){
+        
         console.log(event.target.className)
-        const targetClass = event.target.className
-        const indices = targetClass === "title-1" ? [1, 2, 22] :
-                        targetClass === "title-2" ? [3, 4, 22] :
-                        targetClass === "heading-text" ? [5, 6, 22] :
-                        targetClass === "hr-section" ? [7, 8, 23] :
-                        targetClass === "hr-section-item" ? [9, 10, 23] :
-                        targetClass === "info-text" ? [11, 12, 22] :
-                        targetClass === "point" ? [13, 14, 15, 22] :
-                        targetClass === "section-info" ? [16, 17, 22] :
-                        targetClass === "margin" ? [0, 19, 20, 21] : []
+        const targetClass = event.target.className 
+        const indices = targetClass === "title-1" ? [1, 2, 20, 22] : //First descriptor of section instance - text
+                        targetClass === "title-2" ? [3, 4, 20, 22] : //Second descriptor of section instance - text
+                        targetClass === "heading-text" ? [5, 6, 20, 22] : //Name and section titles - text
+                        targetClass === "hr-section" ? [7, 8, 23] : 
+                        targetClass === "hr-section-item" ? [9, 10, 20, 23] : 
+                        targetClass === "info-text" ? [11, 12, 20, 22] : //personal information text - text
+                        targetClass === "point" ? [13, 14, 15, 20, 22] : //bullet point and its text - text
+                        targetClass === "section-info" ? [16, 17, 20, 22] : //dates and locations - text
+                        targetClass === "margin" ? [0, 19, 20, 21] : [] //resume margins
+                        
         setPopupState(prevPopup => {
             return ({...prevPopup, attributeIndices: indices, visible: true, xpos: `${event.clientX}px`, ypos: `${event.clientY}px`})
         })

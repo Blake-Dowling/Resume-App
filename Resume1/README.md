@@ -53,3 +53,9 @@ It was challenging to trigger a mouseOver event while the user hovers over the r
 The next goal is to create a .js file that maintains the formData's state, in case the browser refreshed. Also, templates need to be made for the user to select from, whereby more guidance is provided while still allowing freedom to edit any element.
 4/20
 Using libraries such as Quill leaves the developer reliant on its capabilities. By building this app from scratch, I was able to have much more control over its capabilities, with the tradeoff of managing the complexity of my own features.
+
+Todo:
+
+Possibly use iconify or fontawesome to enable variable color icons.
+Add 'skills' section.
+Add bold attribute selection.

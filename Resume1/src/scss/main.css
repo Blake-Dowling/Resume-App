@@ -58,7 +58,11 @@
   margin: var(--text-margin);
 }
 .view .view-info hr {
-  margin: var(--line-margin);
+  margin-top: var(--line-margin);
+  margin-bottom: var(--line-margin);
+}
+.view .view-info ul {
+  margin: 0.2em;
 }
 .view .view-info .heading-text {
   font-size: var(--heading-font-size);
@@ -313,6 +317,8 @@
 }
 
 .slider-track {
+  margin-top: 20px;
+  margin-bottom: 20px;
   width: 100%;
   display: flex;
   animation: scroll 20s linear infinite;
@@ -327,14 +333,13 @@
   }
 }
 .slide {
-  width: 200px;
   display: flex;
   align-items: center;
   perspective: 100px;
 }
 
 .template-slide-image {
-  width: 100%;
+  width: 200px;
   transition: transform 1s;
 }
 

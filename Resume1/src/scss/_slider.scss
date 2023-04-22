@@ -1,4 +1,6 @@
 .slider-track {
+    margin-top: 20px;
+    margin-bottom: 20px;
     width: 100%;
     display: flex;
     animation: scroll 20s linear infinite;
@@ -14,13 +16,12 @@
 }
 
 .slide {
-    width: 200px;
     display: flex;
     align-items: center;
     perspective: 100px;
 }
 .template-slide-image {
-    width: 100%;
+    width: 200px;
     transition: transform 1s;
 }
 .template-slide-image:hover {
