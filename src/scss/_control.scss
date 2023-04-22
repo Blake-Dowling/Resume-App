@@ -1,0 +1,165 @@
+@mixin formInput{
+    /* Input box in data form */
+    .form-input{
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0);
+        border: none;
+        border-bottom: 1px solid var(--form-font-color);
+        padding-left: .4em; 
+        padding-right: .4em;
+        margin-left: .4em;
+        margin-right: .4em;
+        z-index: 1;
+    }
+};
+/* Container for form */
+.control{
+    --width: auto;
+    width: var(--width);
+    height: calc(1.2942 * var(--width));
+    display: flex;
+    flex-flow: column;
+    padding: 2em;
+    overflow: scroll;
+    box-shadow: 2px 2px 100px var(--drop-shadow-color);
+    /* Button to add or remove data entries */
+    .form-button, .form-button-remove{
+        margin: .4em;
+        padding: .8em;
+        background-color: rgb(255, 255, 255);
+        border: none;
+        border-radius: 3px;
+        filter: drop-shadow(5px 5px 5px var(--drop-shadow-color));
+        font-family: inherit;
+    }
+        /* Separate data category of form containing form-section-title and form-data*/
+        .form-section{
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            &:hover{
+                border: solid 1px black;
+            }
+            /* Clickable title area of each form section */
+            .form-section-title{
+                position: relative;
+                display: flex;
+                align-items: center;
+                /* Button to hide or show form section */
+                .form-data-button{
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                }
+                /* Buttons for moving form entries */
+                .up-button, .down-button{
+                    position: relative;
+                    padding: 5px;
+                    margin: .4em;
+                    background: rgba(255, 255, 255, 0);
+                    border: none;
+                }
+                .down-button:after{
+                    position: relative;
+                    top: -5px;
+                    display: block;
+                    content: "";
+                    width: 1em;
+                    height: 1em;
+                    border-left: solid 2px var(--form-font-color);
+                    border-bottom: solid 2px var(--form-font-color);
+                    transform: rotate(-45deg)
+                }
+                .up-button:after{
+                    position: relative;
+                    top: 5px;
+                    display: block;
+                    content: "";
+                    width: 1em;
+                    height: 1em;
+                    border-left: solid 2px var(--form-font-color);
+                    border-bottom: solid 2px var(--form-font-color);
+                    transform: rotate(135deg)
+                }
+                /* Text heading for each form section */
+                .form-section-heading{
+                    margin-right: auto;
+                }
+            }
+            /* Outer container for all user data in a section */
+            .form-data{
+                display: block;
+                max-height: 500px;
+                transition-duration: .8s;
+                transition-property: opacity, max-height, transform;
+                /* Outer div containing one data entry object */
+                .form-object-container{
+                    position: relative;
+                    display: flex;
+                    flex-direction: column;
+                    &:hover{
+                        background: rgba(255, 255, 255, 0.107);
+                    }
+                    /* Inner div containing one data entry object */
+                    .form-input-container{
+                        display: grid;
+                        grid-template-columns: repeat(4, 1fr);
+                        /* One data title-input pair */
+                        .form-input-object{
+                            width: 1fr;
+                            position: relative;
+                            display: flex;
+                            font-size: var(--form-info-text-size);
+                            margin: .5em;
+                            margin-left: .2em;
+                            margin-right: .2em;
+                            /* Input box in data form */
+                            @include formInput;
+                            /* Animation when input not empty */
+                            .form-input:focus + .form-input-field, 
+                            .form-input:not([value=""]) + .form-input-field{
+                                font-size: 8px;
+                                top: -10px;
+                            }
+                            /* Title of input in data form */
+                            .form-input-field{
+                                color: var(--form-font-color);
+                                position: absolute;
+                                top: 0px;
+                                margin-left: .4em;
+                                transition-property: top, font-size;
+                                transition-duration: .2s;
+
+                            }
+                        }
+                        }
+                        /* Inputs for bullet points */
+                        .point-input{
+                            display: flex;
+                            align-items: center;
+                            @include formInput;
+                        }
+                        /* Button for removing bullet points */
+                        .remove-point{
+                            border: none;
+                            background: rgba(255, 255, 255, 0);
+                        }
+                        .remove-point:after{
+                            display: block;
+                            content: "\00d7";
+                            color: var(--form-font-color);
+                        }
+                    }
+                }
+            }
+            /* Form section accordion hidden */
+            .form-data[hidden]{
+                transition-duration: .8s;
+                transition-property: opacity, max-height, transform;
+                transition-delay: 0;
+                max-height: 0px;
+                transform: scale(0);
+                opacity: 0;
+            }
+        }
+    

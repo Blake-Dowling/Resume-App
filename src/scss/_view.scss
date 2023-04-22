@@ -1,0 +1,132 @@
+@import "variables";
+.view{
+    //Margin of resume view
+    .margin{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        /* clip-path: polygon(calc(var(--padding-width) * 1px) 50%, 50% 0%, 100% 50%, 50% 100%); */
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 
+        0% calc(var(--padding-width) * 1px), calc(var(--padding-width) * 1px) calc(var(--padding-width) * 1px), calc(var(--padding-width) * 1px) calc((var(--view-height) - var(--padding-width)) * 1px), 
+        calc((var(--view-width) - var(--padding-width)) * 1px) calc((var(--view-height) - var(--padding-width)) * 1px), calc((var(--view-width) - var(--padding-width)) * 1px) calc(var(--padding-width) * 1px), 
+        0px calc(var(--padding-width) * 1px));
+        background-color: white;
+        opacity: 0;
+    }
+    // Info inside of margin (Personal info and Info sections)
+    .view-info{
+        /**************************************************/
+        /********************View Formatting********************/
+        /**************************************************/
+        /* Resume Margin */
+        padding: calc(var(--padding-width) * 1px);
+        h1, h2, p{
+            margin: var(--text-margin);
+        }
+        hr {
+            margin-top: var(--line-margin);
+            margin-bottom: var(--line-margin);
+        }
+        ul {
+            margin: 0.2em;
+        }
+        /* Headings (name, section titles) */
+        .heading-text{
+            font-size: var(--heading-font-size);
+            color: var(--heading-color);
+        }
+        /*X Certificate text */
+        .title-1{
+            font-size: var(--title-1-font-size);
+            color: var(--title-1-color);
+        }
+        /* Objective Text */
+        .title-2{
+            font-size: var(--title-2-font-size);
+            color: var(--title-2-color);
+        }
+        /* Line break between sections */
+        .hr-section{
+            display: var(--section-line-display);
+            border: none;
+            background-color: var(--section-line-color);
+            width: auto;
+            height: 2px;
+            /* box-shadow: 2.5px 2.5px 5px rgba(0, 0, 0, 0.185); */
+        }
+        /* Line break between section items */
+        .hr-section-item{
+            display: var(--subsection-line-display);
+            border: none;
+            border-top: .5px dashed var(--subsection-line-color);
+            background-color: rgba(255, 255, 255, 0);
+            width: 100%;
+            height: 1px;
+        }
+        /* Container Bar for icon-data pairs */
+        .header--contact, .date-location{
+            display: flex;
+            overflow-wrap: normal;
+            flex-wrap: wrap;
+            justify-content: center;
+            /* Template for each contact method element (photo-text pairs) */
+            .header--contact--object{
+                display: flex;
+                align-items: center;
+                margin-top: .2em;
+                margin-bottom: .2em;
+                margin-left: .4em;
+                margin-right: .4em;
+                /*X Contact info text (text in photo-text pairs)*/
+                .info-text{
+                    font-size: var(--info-text-size);
+                    color: var(--info-text-color);
+                    margin-left: .8em;
+                }
+                /* Popup data title */
+                .section-info{
+                    font-size: var(--section-info-size);
+                    color: var(--section-info-color);
+                }
+            }
+        }
+        .date-location{
+            justify-content: left;
+        }
+        /* Bullet points */
+        .point{
+            font-size: var(--point-text-size);
+            color: var(--point-text-color);
+        }
+        .point::marker{
+            font-size: var(--point-style);
+        }
+        /**************************************************/
+        /********************Personal Info********************/
+        /**************************************************/
+        /* Personal Info Main Container */
+        .section-item-container{
+            display: flex;
+            flex-direction: column;
+            align-items: left;
+            overflow-wrap: break-word;
+        }
+        /**************************************************/
+        /********************Info Sections********************/
+        /**************************************************/
+        /* Contains all sections (not personal info.) */
+        .section--container{
+            display: grid;
+            grid-template-columns: repeat(var(--columns), 1fr);
+            /* Contains one info section */
+            .section--block{
+                /* min-width: calc(100% / var(--columns));  */
+                padding: 10px;
+            }
+        }
+        
+    }
+    
+}
