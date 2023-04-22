@@ -1,19 +1,27 @@
 {
   "files": {
-    "main.css": "/Resume-Generator/static/css/main.96341522.css",
-    "main.js": "/Resume-Generator/static/js/main.4eafb435.js",
+    "main.css": "/Resume-Generator/static/css/main.b408be04.css",
+    "main.js": "/Resume-Generator/static/js/main.eceee82d.js",
     "static/js/236.6e0a8fae.chunk.js": "/Resume-Generator/static/js/236.6e0a8fae.chunk.js",
     "static/js/703.1cec7ef7.chunk.js": "/Resume-Generator/static/js/703.1cec7ef7.chunk.js",
     "static/js/560.720cc084.chunk.js": "/Resume-Generator/static/js/560.720cc084.chunk.js",
+    "static/media/Github-Logo.png": "/Resume-Generator/static/media/Github-Logo.bc68d93d543f09896a2c.png",
+    "static/media/Calendar-Logo.png": "/Resume-Generator/static/media/Calendar-Logo.d9c685be59efebc348e6.png",
+    "static/media/Phone-Logo.png": "/Resume-Generator/static/media/Phone-Logo.8d46c3dce0bc9b3cdcf4.png",
+    "static/media/template_slide1.png": "/Resume-Generator/static/media/template_slide1.f1b85ef67cf51c739b06.png",
+    "static/media/Linkedin-Logo.png": "/Resume-Generator/static/media/Linkedin-Logo.926fcaaa168acc854197.png",
+    "static/media/Website-Logo.png": "/Resume-Generator/static/media/Website-Logo.64c9923b7e5014e1e80a.png",
+    "static/media/Gmail-Logo.png": "/Resume-Generator/static/media/Gmail-Logo.7ba62beb3e2d3aa30b81.png",
+    "static/media/Location-Logo.png": "/Resume-Generator/static/media/Location-Logo.b3510a7306016eda6518.png",
     "index.html": "/Resume-Generator/index.html",
-    "main.96341522.css.map": "/Resume-Generator/static/css/main.96341522.css.map",
-    "main.4eafb435.js.map": "/Resume-Generator/static/js/main.4eafb435.js.map",
+    "main.b408be04.css.map": "/Resume-Generator/static/css/main.b408be04.css.map",
+    "main.eceee82d.js.map": "/Resume-Generator/static/js/main.eceee82d.js.map",
     "236.6e0a8fae.chunk.js.map": "/Resume-Generator/static/js/236.6e0a8fae.chunk.js.map",
     "703.1cec7ef7.chunk.js.map": "/Resume-Generator/static/js/703.1cec7ef7.chunk.js.map",
     "560.720cc084.chunk.js.map": "/Resume-Generator/static/js/560.720cc084.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.96341522.css",
-    "static/js/main.4eafb435.js"
+    "static/css/main.b408be04.css",
+    "static/js/main.eceee82d.js"
   ]
 }
