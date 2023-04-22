@@ -1,5 +1,5 @@
 import React from "react"
-
+// Information subsection e.g. a job in 'employment' section
 export default function InfoItem(props){
     return (
         <div className="section-item-container">

@@ -3,10 +3,22 @@ import React from "react"
 export default function Popup(props){
     const formatArray = props.attributeIndices.map(i => (props.format[i]))
     console.log(props.attributeIndices)
+    // Style attributes used for popup
+    const popupStyle = {
+        position: "absolute",
+        width: "auto",
+        height: "auto",
+        left: props.popupState.xpos,
+        top: props.popupState.ypos,
+        background: "white",
+        // border: "1px solid black",
+        padding: "4px"
+    }
+
     return (
         
         // <div className="popupEnv" style={props.popupStyle}>
-            <div className="popup" style={props.popupStyle} hidden={!props.visible} onMouseLeave={props.popupHide}>
+            <div className="popup" style={popupStyle} hidden={!props.visible} onMouseLeave={props.popupHide}>
                 
                 {formatArray.map( formatObj => {
                     const formatId = formatObj.formatId

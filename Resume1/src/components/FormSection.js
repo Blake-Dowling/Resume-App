@@ -2,6 +2,39 @@ import React from "react"
 export default function FormSection(props){
     //Passed data object
     const dataObj = props.formData[props.dataset][props.index]
+
+    //Adds a bullet point field to the given info section
+    function addPoint(index, dataset){
+        props.setFormData(prevFormData => {
+                let newArr = prevFormData[dataset].map(i => ({...i})) //Copy
+                //old data object array
+                newArr[index].points.push({
+                    pointIndex: newArr[index].points.length,
+                    pointContent: ""}) //Add a point object to the
+                //points property of the specified info section
+                return ({
+                    ...prevFormData,
+                    [dataset]: newArr
+                })
+            }
+        )
+    }
+    function removePoint(index, dataset, pointNum){
+        props.setFormData(prevFormData => {
+            let newArr = prevFormData[dataset].map(i => ({...i})) //Copy old data object array
+            let pointsList = newArr[index].points //points array
+            for(let i = pointsList.length - 1; i > pointNum; i --){ //decrement succeeding indices
+                pointsList[i].pointIndex --
+            }
+            pointsList.splice(pointNum, 1) //remove point object at given index
+            return ({
+                ...prevFormData,
+                [dataset]: newArr
+            })
+        })
+    }
+    
+
     return(
         <form>
                     <div className="form-object-container">
@@ -39,7 +72,7 @@ export default function FormSection(props){
                                 <button
                                     className="form-button"
                                     type="button"
-                                    onMouseDown={() => props.addPoint(props.index, props.dataset)}
+                                    onMouseDown={() => addPoint(props.index, props.dataset)}
                                     >Add Point
                                 </button>
                                 {/************************************************************/}
@@ -58,7 +91,7 @@ export default function FormSection(props){
                                                     <button
                                                         className="remove-point"
                                                         type="button"
-                                                        onMouseDown={() => props.removePoint(props.index, props.dataset, pointIndex)}
+                                                        onMouseDown={() => removePoint(props.index, props.dataset, pointIndex)}
                                                     >
                                                     </button>
                                                 </div>

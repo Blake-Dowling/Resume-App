@@ -1,4 +1,5 @@
 import React from "react"
+// Personal Information section of resume view
 export default function Heading(props){
     return (
         <header className="section-item-container">

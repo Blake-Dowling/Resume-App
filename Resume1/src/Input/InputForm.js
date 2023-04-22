@@ -80,7 +80,8 @@ export default function InputForm(props) {
             }
         )
     }
-    /* Function to change state objects */
+    /* Updates form data state (e.g. when user changes an input). Called 
+    by JSX elements in FormSection. */
     function handleChange(event, dataset, index, pointNum){
         // name: input name property, value: input field value
         const {name, value, type, checked} = event.target
@@ -106,54 +107,32 @@ export default function InputForm(props) {
                  }
         })
     }
-    //Adds a bullet point field to the given info section
-    function addPoint(index, dataset){
-        props.setFormData(prevFormData => {
-                let newArr = prevFormData[dataset].map(i => ({...i})) //Copy
-                //old data object array
-                newArr[index].points.push({
-                    pointIndex: newArr[index].points.length,
-                    pointContent: ""}) //Add a point object to the
-                //points property of the specified info section
-                return ({
-                    ...prevFormData,
-                    [dataset]: newArr
-                })
-            }
-        )
-    }
-    function removePoint(index, dataset, pointNum){
-        props.setFormData(prevFormData => {
-            let newArr = prevFormData[dataset].map(i => ({...i})) //Copy old data object array
-            let pointsList = newArr[index].points //points array
-            for(let i = pointsList.length - 1; i > pointNum; i --){ //decrement succeeding indices
-                pointsList[i].pointIndex --
-            }
-            pointsList.splice(pointNum, 1) //remove point object at given index
-            return ({
-                ...prevFormData,
-                [dataset]: newArr
-            })
-        })
-    }
 
 return (
     <div className="control">
+        {/* Generate PDF button */}
     <button id="generate-button" className="form-button" onClick={generatePDF} type="button">Generate PDF</button>
+        {/* Display information sections onto input form */}
         {Object.values(props.sectionList).map((sectionValue, sectionIndex) => {
             const sectionName = sectionValue.sectionName
             const fields = sectionValue.fields
             return(
-            <div className="form-section">
-                <div className="form-section-title">
+                
+            <div className="form-section"> {/* Form section container */}
+                <div className="form-section-title"> 
+                    {/* Accordion effect button (Hides section when click title area) */}
                     <a className="form-data-button" onClick={() => (changeVisibility(sectionIndex))}></a>
+                    {/* Enable sections (except personal info) to be moved up or down in order */}
                     {sectionName !== "personalInformation" && 
-                    <div>
+                    <div> {/* Up and down buttons */}
                         <button className="up-button" onClick={() => ordersectionList(sectionIndex, "up")}></button>
                         <button className="down-button" onClick={() => ordersectionList(sectionIndex, "down")}></button>
                     </div>}
+                    {/* Form section title (e.g. 'Personal Information') */}
                     <h2 className="form-section-heading">{sectionValue.title}</h2>
                     {sectionName !== "personalInformation" &&
+                        // Button for adding a new instance of a section (except personal info)
+                        // (Note: remove section instance button is in FormSection component)
                         <button 
                             className="form-button" 
                             type="button" 
@@ -162,7 +141,8 @@ return (
                         </button>
                     }
                 </div>
-                
+                {/* Within each section, the following code lists (maps)
+                    each of its instances as FormSection components */}
                 {/* <div className="form-data" style={sectionValue.visible ? {} : {display: "none"}}> */}
                 <div className="form-data" hidden={!sectionValue.visible}>
                     {props.formData[sectionName].map(dataObject => {
@@ -172,22 +152,17 @@ return (
                                 index={dataObject.index}
                                 dataset={sectionName}
                                 formData={props.formData}
+                                setFormData={props.setFormData}
                                 handleChange={handleChange}
                                 removeSection={removeSection}
-                                addPoint={addPoint}
-                                removePoint={removePoint}
+                                // addPoint={addPoint}
+                                // removePoint={removePoint}
                             />
                         )
                     })}
                 </div>
         </div>)}
     )}
-
     </div>
   )
 }
-
-
-{/************************************************************/}
-            {/******************** Right: input form ********************/}
-            {/************************************************************/}
