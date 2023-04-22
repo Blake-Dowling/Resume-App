@@ -6,7 +6,7 @@ import "./scss/main.css"
 
 
 import Popup from "./components/Popup.js"
-import formatState from "./formatState.js"
+import formatState0 from "./formatStates/formatState0.js"
 import InputForm from "./Input/InputForm"
 import ResumeView from "./ResumeView/ResumeView.js"
 import Slider from "./components/Slider"
@@ -20,9 +20,16 @@ function App(){
     // Resume styling template. Object containing styles imported
     // from .js file.
     const [format, setFormat] = React.useState(
-        formatState
+        formatState0
     )
-    function changeFormat(event, formatIndex){
+    function changeFormat(newFormat){
+        return setFormat(prevFormat => {
+            return newFormat
+        })
+    }
+    // Callback function to change the attribute indicated by event.
+    // Invoked in Popup component.
+    function changeFormatAttribute(event, formatIndex){
         const {name, value} =  event.target
         let newFormat = format[formatIndex]
         newFormat["formatValue"] = value
@@ -103,7 +110,9 @@ function App(){
 
     return(
         <div className="page">
-            <Slider/>
+            <Slider
+                changeFormat={changeFormat}
+            />
             <div className="page-body">
                 <ResumeView
                     format={format}
@@ -123,7 +132,7 @@ function App(){
                     visible={popupState.visible}
                     popupHide={popupHide}
                     format={format}
-                    changeFormat={changeFormat}
+                    changeFormatAttribute={changeFormatAttribute}
                 />
             </div>
         </div>

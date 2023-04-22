@@ -38,7 +38,7 @@ export default function Popup(props){
                                                         className="form-input"
                                                         id="form-input"
                                                         type="text"
-                                                        onChange={(event) => props.changeFormat(event, formatId)}
+                                                        onChange={(event) => props.changeFormatAttribute(event, formatId)}
                                                         name={formatId}
                                                         value={formatValue}
                                                     > 
