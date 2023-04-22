@@ -1,12 +1,12 @@
 import React from "react"
 const colors = ["black", "white", "lightgrey", "deepskyblue", "gold", "grey", "blue", "red", "yellow"]
-const fontSizes = [".2em", ".4em", ".6em", ".8em", "1em", "1.2em", "1.4em", "1.6em"] 
+const fontSizes = [".2em", ".4em", ".6em", ".8em", "1em", "1.2em", "1.4em", "1.6em", "1.8em", "2em", "2.2em", "2.4em", "2.6em", "2.8em", "3em"] 
 const fonts = ["Times New Roman", "Roboto", "Khula", "Rubik", "Cormorant Garamond", "Arial", "Cambria", "Calibri", "Helvetica", "Courier New", "Geneva", "Georgia", "Palatino", "Lucida Grande", "Trebuchet MS"]
 export default [{
     formatId: 0,
     formatValue: 1.0,
     formatName: "margins",
-    formatOptions: [0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0]            
+    formatOptions: [0.1, 0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0]            
 },
 {
     formatId: 1,
@@ -133,5 +133,17 @@ export default [{
     formatValue: "1",
     formatName: "columns",
     formatOptions: ["1", "2", "3", "4"]          
+},
+{
+    formatId: 22,
+    formatValue: "0em",
+    formatName: "text margin",
+    formatOptions: ["0em", ".2em", ".4em", ".6em", ".8em", "1em",]       
+},
+{
+    formatId: 23,
+    formatValue: "0em",
+    formatName: "line margin",
+    formatOptions: ["0em", ".2em", ".4em", ".6em", ".8em", "1em",]       
 }
 ]

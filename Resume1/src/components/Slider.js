@@ -1,5 +1,5 @@
 import React from 'react'
-import template_slide1 from '../images/template_slide1.png'
+import template_slide1 from '../images/template_slides/template_slide1.png'
 import formatState1 from '../formatStates/formatState1'
 
 export default function Slider(props) {

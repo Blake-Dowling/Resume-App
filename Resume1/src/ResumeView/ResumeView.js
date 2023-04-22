@@ -1,6 +1,7 @@
 import React from 'react'
 import Heading from '../components/Heading'
 import InfoItem from '../components/InfoItem'
+
 const ref = React.createRef()
 
 export default function ResumeView(props) {
@@ -36,7 +37,9 @@ export default function ResumeView(props) {
         ["--point-text-size"]: format[14].formatValue,
         ["--point-text-color"]: format[15].formatValue,
         ["--section-info-size"]: format[16].formatValue,
-        ["--section-info-color"]: format[17].formatValue
+        ["--section-info-color"]: format[17].formatValue,
+        ["--text-margin"]: format[22].formatValue,
+        ["--line-margin"]: format[23].formatValue
     }
   return (
     <div ref={ref} style={resumeStyle} className="view">

@@ -80,18 +80,18 @@ function App(){
     const [popupState, setPopupState] = React.useState({attributeIndices: [], visible: false, xpos: "0px", ypos: "0px"})
     // Callback function used by JSX elements in ResumeView component. Makes 
     // popup appear under cursor when a resume feature is hovered and 
-    // configures popup accordingly
+    // configures popup attributes accordingly
     function itemPopup(event){
         console.log(event.target.className)
         const targetClass = event.target.className
-        const indices = targetClass === "title-1" ? [1, 2] :
-                        targetClass === "title-2" ? [3, 4] :
-                        targetClass === "heading-text" ? [5, 6] :
-                        targetClass === "hr-section" ? [7, 8] :
-                        targetClass === "hr-section-item" ? [9, 10] :
-                        targetClass === "info-text" ? [11, 12] :
-                        targetClass === "point" ? [13, 14, 15] :
-                        targetClass === "section-info" ? [16, 17] :
+        const indices = targetClass === "title-1" ? [1, 2, 22] :
+                        targetClass === "title-2" ? [3, 4, 22] :
+                        targetClass === "heading-text" ? [5, 6, 22] :
+                        targetClass === "hr-section" ? [7, 8, 23] :
+                        targetClass === "hr-section-item" ? [9, 10, 23] :
+                        targetClass === "info-text" ? [11, 12, 22] :
+                        targetClass === "point" ? [13, 14, 15, 22] :
+                        targetClass === "section-info" ? [16, 17, 22] :
                         targetClass === "margin" ? [0, 19, 20, 21] : []
         setPopupState(prevPopup => {
             return ({...prevPopup, attributeIndices: indices, visible: true, xpos: `${event.clientX}px`, ypos: `${event.clientY}px`})

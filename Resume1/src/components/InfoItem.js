@@ -1,4 +1,6 @@
 import React from "react"
+import calendar from "../images/icons/Calendar-Logo.png"
+import location from "../images/icons/Location-Logo.png"
 // Information subsection e.g. a job in 'employment' section
 export default function InfoItem(props){
     return (
@@ -16,14 +18,14 @@ export default function InfoItem(props){
                     {/* Date */}
                     {props.dataset.dates &&
                         <div className="header--contact--object">
-                            <img className="logo" onMouseOver={(event) => props.itemPopup(event)} id="calendar-logo" src="/images/Calendar-Logo.png"/>
+                            <img className="logo" onMouseOver={(event) => props.itemPopup(event)} id="calendar-logo" src={calendar}/>
                             <p className="section-info" onMouseOver={(event) => props.itemPopup(event)}>{props.dataset.dates}</p>
                         </div>
                     }
                     {/* Location */}
                     {props.dataset.location &&
                         <div className="header--contact--object">
-                            <img className="logo" onMouseOver={(event) => props.itemPopup(event)} id="location-logo" src="/images/Location-Logo.png"/>
+                            <img className="logo" onMouseOver={(event) => props.itemPopup(event)} id="location-logo" src={location}/>
                             <p className="section-info" onMouseOver={(event) => props.itemPopup(event)}>{props.dataset.location}</p>
                         </div>
                     }

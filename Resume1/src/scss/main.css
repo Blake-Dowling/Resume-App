@@ -54,6 +54,12 @@
   /**************************************************/
   /* Contains all sections (not personal info.) */
 }
+.view .view-info h1, .view .view-info h2, .view .view-info p {
+  margin: var(--text-margin);
+}
+.view .view-info hr {
+  margin: var(--line-margin);
+}
 .view .view-info .heading-text {
   font-size: var(--heading-font-size);
   color: var(--heading-color);
