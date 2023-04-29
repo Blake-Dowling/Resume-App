@@ -326,8 +326,7 @@
   margin-top: 20px;
   margin-bottom: 20px;
   width: 100%;
-  display: flex;
-  animation: scroll 20s linear infinite;
+  white-space: nowrap;
 }
 
 @keyframes scroll {
@@ -338,8 +337,14 @@
     transform: translateX(-100%);
   }
 }
+.slide-carrier {
+  display: inline-block;
+  animation: scroll 20s linear infinite;
+}
+
 .slide {
-  display: flex;
+  margin: 0px 20px;
+  display: inline-block;
   align-items: center;
   perspective: 100px;
 }
@@ -348,6 +353,7 @@
   --slide-width: 200px;
   width: var(--slide-width);
   transition: transform 1s;
+  box-shadow: 2.5px 2.5px 5px rgba(0, 0, 0, 0.185);
 }
 
 .template-slide-image:hover {

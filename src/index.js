@@ -6,7 +6,7 @@ import "./scss/main.css"
 
 
 import Popup from "./components/Popup.js"
-import formatState0 from "./formatStates/formatState2.js"
+import formatState0 from "./formatStates/formatState0.js"
 import formatState1 from "./formatStates/formatState1.js"
 import formatState2 from "./formatStates/formatState2.js"
 import templateSlide0 from './images/template_slides/templateSlide0.png'

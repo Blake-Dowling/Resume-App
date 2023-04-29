@@ -14,9 +14,21 @@ export default function Slider(props) {
   return (
     <div className="slider-container">
         <div className="slider-track">
-            {props.formatStates.map((formatState) => {
-                return (<Slide format={formatState.format} slide={formatState.slide} changeFormat={props.changeFormat}/>)
-            })}
+            <div className="slide-carrier">
+                {props.formatStates.map((formatState) => {
+                    return (<Slide format={formatState.format} slide={formatState.slide} changeFormat={props.changeFormat}/>)
+                })}
+            </div>
+            <div className="slide-carrier">
+                {props.formatStates.map((formatState) => {
+                    return (<Slide format={formatState.format} slide={formatState.slide} changeFormat={props.changeFormat}/>)
+                })}
+            </div>
+            <div className="slide-carrier">
+                {props.formatStates.map((formatState) => {
+                    return (<Slide format={formatState.format} slide={formatState.slide} changeFormat={props.changeFormat}/>)
+                })}
+            </div>
 
         </div>
     </div>
