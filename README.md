@@ -11,7 +11,9 @@ This project is a front-end web application that allows users to generate a PDF 
 * Save the generated resume as a PDF file
 
 
-https://user-images.githubusercontent.com/121590227/233767677-669bf066-fee9-470c-9b27-d2b347d90b49.mov
+
+https://user-images.githubusercontent.com/121590227/235287932-247a098e-edba-4604-bb0b-11223a5aad18.mov
+
 
 
 How to use this application:
