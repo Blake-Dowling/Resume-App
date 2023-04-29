@@ -37,10 +37,16 @@
             font-size: var(--heading-font-size);
             color: var(--heading-color);
         }
+        .name-text{
+            font-size: var(--heading-font-size);
+            color: var(--heading-color);
+            text-align: center;
+        }
         /*X Certificate text */
         .title-1{
             font-size: var(--title-1-font-size);
             color: var(--title-1-color);
+            font-weight: bold;
         }
         /* Objective Text */
         .title-2{
@@ -123,7 +129,7 @@
             /* Contains one info section */
             .section--block{
                 /* min-width: calc(100% / var(--columns));  */
-                padding: 10px;
+                padding: 0px;
             }
         }
         

@@ -11,7 +11,7 @@ export default function Heading(props){
         <header className="section-item-container">
             {/* Name */}
             {props.personalInfo.name && 
-                <h1 className="heading-text" onMouseOver={(event) => props.itemPopup(event)}>{props.personalInfo.name}</h1>
+                <h1 className="name-text" onMouseOver={(event) => props.itemPopup(event)}>{props.personalInfo.name}</h1>
             }
             {/* Objective */}
             {props.personalInfo.objective && 

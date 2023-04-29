@@ -21,7 +21,8 @@
     perspective: 100px;
 }
 .template-slide-image {
-    width: 200px;
+    --slide-width: 200px;
+    width: var(--slide-width);
     transition: transform 1s;
 }
 .template-slide-image:hover {

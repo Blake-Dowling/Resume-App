@@ -6,7 +6,12 @@ import "./scss/main.css"
 
 
 import Popup from "./components/Popup.js"
-import formatState0 from "./formatStates/formatState0.js"
+import formatState0 from "./formatStates/formatState2.js"
+import formatState1 from "./formatStates/formatState1.js"
+import formatState2 from "./formatStates/formatState2.js"
+import templateSlide0 from './images/template_slides/templateSlide0.png'
+import templateSlide1 from './images/template_slides/templateSlide1.png'
+import templateSlide2 from './images/template_slides/templateSlide2.png'
 import formState0 from "./formatStates/formState0.js"
 import InputForm from "./Input/InputForm"
 import ResumeView from "./ResumeView/ResumeView.js"
@@ -20,6 +25,11 @@ function App(){
     // ****************************** Format ******************************
     // Resume styling template. Object containing styles imported
     // from .js file.
+    const formatStates = [
+        {format: formatState0, slide: templateSlide0},
+        {format: formatState1, slide: templateSlide1},
+        {format: formatState2, slide: templateSlide2}
+    ]
     const [format, setFormat] = React.useState(
         formatState0
     )
@@ -98,6 +108,7 @@ function App(){
         <div className="page">
             <Slider
                 changeFormat={changeFormat}
+                formatStates = {formatStates}
             />
             <div className="page-body">
                 <ResumeView

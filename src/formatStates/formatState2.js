@@ -10,19 +10,19 @@ export default [{
 },
 {
     formatId: 1,
-    formatValue: ".8em",
+    formatValue: ".7em",
     formatName: "title 1 size",
     formatOptions: [...fontSizes]
 },
 {
     formatId: 2,
-    formatValue: "dodgerblue",
+    formatValue: "gold",
     formatName: "title 1 color",
     formatOptions: [...colors]          
 },
 {
     formatId: 3,
-    formatValue: ".7em",
+    formatValue: ".6em",
     formatName: "title 2 size",
     formatOptions: [...fontSizes]            
 },
@@ -40,7 +40,7 @@ export default [{
 },
 {
     formatId: 6,
-    formatValue: "black",
+    formatValue: "midnightBlue",
     formatName: "heading color",
     formatOptions: [...colors]             
 },

@@ -16,8 +16,8 @@ export default {
     // Education 1
     educationList: [{
         index: 0,
-        certificate: "Your Master's Degree, M.S.",
-        institution: "Your University",
+        certificate: "Your University",
+        institution: "Your Master's Degree, M.S.",
         dates: "Start/Date - End/Date",
         location: "Your University's, Location",
         points: [{
@@ -32,8 +32,8 @@ export default {
     // Education 2
     {
         index: 1,
-        certificate: "Your Bachelor's Degree, B.S.",
-        institution: "Your University",
+        certificate: "Your University",
+        institution: "Your Bachelor's Degree, B.S.",
         dates: "Start/Date - End/Date",
         location: "Your University's, Location",
         points: [{

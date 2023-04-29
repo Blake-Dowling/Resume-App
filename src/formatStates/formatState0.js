@@ -1,5 +1,5 @@
 import React from "react"
-const colors = ["black", "white", "lightgrey", "deepskyblue", "gold", "grey", "blue", "red", "yellow"]
+const colors = ["black", "white", "lightgrey", "deepskyblue", "midnightBlue", "darkTurquoise", "gold", "grey", "blue", "red", "yellow"]
 const fontSizes = [".2em", ".3em", ".4em", ".5em", ".6em", ".7em", ".8em", ".9em", "1em", "1.2em", "1.4em", "1.6em", "1.8em", "2em", "2.2em", "2.4em", "2.6em", "2.8em", "3em"] 
 const fonts = ["Times New Roman", "Roboto", "Khula", "Rubik", "Cormorant Garamond", "Arial", "Cambria", "Calibri", "Helvetica", "Courier New", "Geneva", "Georgia", "Palatino", "Lucida Grande", "Trebuchet MS"]
 export default [{
